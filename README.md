@@ -11,9 +11,9 @@ Super User(SU):
   * Process complains about OUs
   * Have all privileges reserved for OUs inside any group
 Ordinary User(OU):
-  * 
+
 Guest User(GU):
-  *
+  
 
 Constraints:
 
