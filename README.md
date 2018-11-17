@@ -1,4 +1,4 @@
 Language: Java
-Storage: Database or ASCII file
+Storage: Database
 Operating System: Windows
 IDE: IntelliJ
