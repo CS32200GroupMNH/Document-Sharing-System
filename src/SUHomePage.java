@@ -1,6 +1,8 @@
 import javax.swing.*;
 
 public class SUHomePage {
+
+
     private JPanel SUHPPanel;
     private JLabel UserNameLabel;
     private JButton messagesButton;
@@ -10,6 +12,10 @@ public class SUHomePage {
     private JButton searchUsersButton1;
     private JList list1;
     private JButton openDocumentButton;
+
+    public JPanel getSUHPPanel() {
+        return SUHPPanel;
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("SUHomePage");
