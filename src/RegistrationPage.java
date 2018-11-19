@@ -9,8 +9,10 @@ public class RegistrationPage {
     private JTextField userNameField;
     private JButton registerButton;
     private JPasswordField passwordField1;
-    private JButton logInButton;
+    private JButton homeButton;
     private JLabel statusLabel;
+    private JTextField fullNameField;
+    private JTextField interestField;
 
     public RegistrationPage() {
         registerButton.addActionListener(new ActionListener() {
@@ -18,7 +20,7 @@ public class RegistrationPage {
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
 
-                if(s.registerUser(userNameField.getText(),passwordField1.getPassword(),"SU")){
+                if(s.applyForMembership(userNameField.getText(),passwordField1.getPassword(), fullNameField.getText(),interestField.getText())){
                     statusLabel.setText("Successfully Registered User");
                 }
                 else{
@@ -26,11 +28,11 @@ public class RegistrationPage {
                 }
             }
         });
-        logInButton.addActionListener(new ActionListener() {
+        homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.changePage("LoginPage");
+                s.changePage("GuestUserPage");
             }
         });
     }

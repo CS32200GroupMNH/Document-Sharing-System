@@ -1,6 +1,8 @@
 import javax.swing.*;
 
 public class OUHomePage {
+
+
     private JPanel OUPanel;
     private JPanel SUHPPanel;
     private JLabel UserNameLabel;
@@ -10,6 +12,10 @@ public class OUHomePage {
     private JButton searchUsersButton1;
     private JList list1;
     private JButton openDocumentButton;
+
+    public JPanel getOUPanel() {
+        return OUPanel;
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("OUHomePage");

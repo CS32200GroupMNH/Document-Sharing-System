@@ -41,7 +41,7 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.changePage("RegistrationPage");
+                s.changePage("GuestUserPage");
                 incorrectPasswordLabel.setText("");
                 passwordField1.setText("");
             }

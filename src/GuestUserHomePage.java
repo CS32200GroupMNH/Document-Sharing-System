@@ -1,12 +1,29 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GuestUserHomePage {
+
+
     private JPanel GUPanel;
     private JPanel SUHPPanel;
-    private JLabel UserNameLabel;
     private JButton applyToBecomeOrdinaryButton;
     private JList list1;
     private JButton openDocumentButton;
+
+    public GuestUserHomePage() {
+        applyToBecomeOrdinaryButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("RegistrationPage");
+            }
+        });
+    }
+
+    public JPanel getGUPanel() {
+        return GUPanel;
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("GuestUserHomePage");

@@ -25,12 +25,14 @@ public class SystemManager {
 
         cards = new JPanel(new CardLayout());
         JPanel logInPanel = new LoginPage().getMainPanel();
-        JPanel homePanel =  new SUHomePage().getSUHPPanel();
+        JPanel homePanel =  new OUHomePage().getOUPanel();
         JPanel registrationPanel = new RegistrationPage().getRegestrationPanel();
+        JPanel guestUserPanel = new GuestUserHomePage().getGUPanel();
 
         cards.add(logInPanel,"LoginPage");
         cards.add(homePanel,"HomePage");
         cards.add(registrationPanel,"RegistrationPage");
+        cards.add(guestUserPanel,"GuestUserPage");
 
         JFrame frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
@@ -89,6 +91,16 @@ public class SystemManager {
             return true;
           }catch (Exception e){System.out.println(e);}
 
+
+        return false;
+    }
+
+    public boolean applyForMembership(String userName, char[] password, String name, String interests) {
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO userapplications VALUES ('"+ userName +"', '"+ String.valueOf(password)+"', '"+name+"', '"+interests+"');");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
 
         return false;
     }
