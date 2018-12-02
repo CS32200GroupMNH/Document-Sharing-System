@@ -25,11 +25,17 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="da9a8" class="javax.swing.JButton" binding="documentButton" default-binding="true">
+          <component id="da9a8" class="javax.swing.JButton" binding="saveButton" default-binding="true">
             <constraints/>
             <properties>
               <inheritsPopupMenu value="false"/>
-              <text value="Document"/>
+              <text value="Save"/>
+            </properties>
+          </component>
+          <component id="64274" class="javax.swing.JButton" binding="lockButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Lock"/>
             </properties>
           </component>
           <component id="ae9ea" class="javax.swing.JButton" binding="versionsButton" default-binding="true">
@@ -73,7 +79,14 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <columns value="1"/>
+          <editable value="false"/>
+          <lineWrap value="true"/>
+          <margin top="0" left="10" bottom="0" right="0"/>
+          <rows value="1"/>
+          <wrapStyleWord value="true"/>
+        </properties>
       </component>
     </children>
   </grid>

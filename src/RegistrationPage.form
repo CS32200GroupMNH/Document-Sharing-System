@@ -27,7 +27,7 @@
         </constraints>
         <properties>
           <font size="28"/>
-          <text value="Apply to become a Oridinary User"/>
+          <text value="Apply to become a Ordinary  User"/>
         </properties>
       </component>
       <component id="b73ba" class="javax.swing.JLabel">
@@ -72,7 +72,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Register"/>
+          <text value="Apply"/>
         </properties>
       </component>
       <vspacer id="f6914">

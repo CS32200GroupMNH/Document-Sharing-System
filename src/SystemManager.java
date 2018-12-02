@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.sql.Driver;
 import java.util.Arrays;
+import java.util.UUID;
+import java.util.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,6 +19,15 @@ public class SystemManager {
     private String userName;
     private Connection dataBaseConnection;
 
+    private ArrayList<Document> documentList;
+
+    private LoginPage logInPanel = new LoginPage();
+    private OUHomePage homePanel =  new OUHomePage();
+    private RegistrationPage registrationPanel = new RegistrationPage();
+    private GuestUserHomePage guestUserPanel = new GuestUserHomePage();
+    private NewDocumentPage newDocumentPanel = new NewDocumentPage();
+    private DocumentPage documentPanel = new DocumentPage();
+
     private SystemManager() {
 
         try{
@@ -24,15 +35,14 @@ public class SystemManager {
         }catch (Exception e){System.out.println(e);}
 
         cards = new JPanel(new CardLayout());
-        JPanel logInPanel = new LoginPage().getMainPanel();
-        JPanel homePanel =  new OUHomePage().getOUPanel();
-        JPanel registrationPanel = new RegistrationPage().getRegestrationPanel();
-        JPanel guestUserPanel = new GuestUserHomePage().getGUPanel();
 
-        cards.add(logInPanel,"LoginPage");
-        cards.add(homePanel,"HomePage");
-        cards.add(registrationPanel,"RegistrationPage");
-        cards.add(guestUserPanel,"GuestUserPage");
+
+        cards.add(logInPanel.getMainPanel(),"LoginPage");
+        cards.add(homePanel.getOUPanel(),"HomePage");
+        cards.add(registrationPanel.getRegestrationPanel(),"RegistrationPage");
+        cards.add(guestUserPanel.getGUPanel(),"GuestUserPage");
+        cards.add(newDocumentPanel.getNewDocumentPanel(),"NewDocumentPage");
+        cards.add(documentPanel.getDocumentPanel(),"DocumentPage");
 
         JFrame frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
@@ -53,6 +63,7 @@ public class SystemManager {
 
             Connection conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected");
+
             return  conn;
         } catch(Exception e){System.out.println(e);}
 
@@ -63,7 +74,6 @@ public class SystemManager {
     public void changePage(String pageName){
         CardLayout cardLayout = (CardLayout) cards.getLayout();
         cardLayout.show(cards,pageName);
-
     }
 
     public boolean logIn(String userName, char[] password){ ///Queries the Database and checks if the password is correct for the user in the database. Returns true if correct false otherwise
@@ -75,22 +85,12 @@ public class SystemManager {
             while (result.next()) {
                 String pass = result.getString("password");
                 if(Arrays.equals(result.getString("password").toCharArray(),password)) {
-                    userName = userName;
+                    this.userName = userName;
+                    homePanel.listDocuments(getAllDocuments());
                     return true;
                 }
             }
         }catch (Exception e){System.out.println(e);}
-
-        return false;
-    }
-
-    public boolean registerUser(String userName, char[] password, String userType){
-        try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO users VALUES ('"+ userName +"', '"+ String.valueOf(password) +"', '" + userType + "');");
-            statement1.executeUpdate();
-            return true;
-          }catch (Exception e){System.out.println(e);}
-
 
         return false;
     }
@@ -104,4 +104,60 @@ public class SystemManager {
 
         return false;
     }
+
+    public boolean createNewDocument(String docName, String docType) {
+        try{
+            String uniqueID = UUID.randomUUID().toString();
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Documents VALUES ('"+ uniqueID +"', '"+ docName+"', '"+this.userName+"', '"+docType+"',NULL,'');");
+            statement1.executeUpdate();
+             documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,""));
+            return true;
+        }catch (Exception e){System.out.println(e);}
+
+        return false;
+    }
+
+    public boolean saveDocument(Document d){
+        try{
+            String uniqueID = UUID.randomUUID().toString();
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + d.getDocumentContent() + "' WHERE documentID = '" + d.getDocumentID() + "';");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+
+
+        return false;
+    }
+
+    public ArrayList<Document> getAllDocuments(){
+        ArrayList<Document> docArray = new ArrayList<Document>(3);
+
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE owner = '"+ this.userName +"';");
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
+            }
+        }catch (Exception e){System.out.println(e);}
+        return docArray;
+
+    }
+
+    public boolean openDocument(String documentName){
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE documentName = '"+ documentName +"';");
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                documentPanel.setDocumentData( new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
+                changePage("DocumentPage");
+                return true;
+            }
+        }catch (Exception e){System.out.println(e);}
+
+
+        return false;
+    }
+
 }

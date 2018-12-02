@@ -21,7 +21,7 @@ public class RegistrationPage {
                 SystemManager s = SystemManager.getInstance();
 
                 if(s.applyForMembership(userNameField.getText(),passwordField1.getPassword(), fullNameField.getText(),interestField.getText())){
-                    statusLabel.setText("Successfully Registered User");
+                    statusLabel.setText("Successfully sent application for " + fullNameField.getText());
                 }
                 else{
                     statusLabel.setText("Unable to Register. Try a different username.");

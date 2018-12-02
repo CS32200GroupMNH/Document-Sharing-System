@@ -128,7 +128,7 @@
               <text value="Top Documents"/>
             </properties>
           </component>
-          <component id="a3064" class="javax.swing.JList" binding="list1" default-binding="true">
+          <component id="a3064" class="javax.swing.JList" binding="docList">
             <constraints>
               <grid row="11" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="2" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
@@ -146,7 +146,6 @@
                 <item value="Document6"/>
                 <item value="Document7"/>
                 <item value="Document8"/>
-                <item value="Document9"/>
               </model>
               <selectionMode value="0"/>
             </properties>

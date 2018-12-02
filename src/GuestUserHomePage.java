@@ -10,6 +10,7 @@ public class GuestUserHomePage {
     private JButton applyToBecomeOrdinaryButton;
     private JList list1;
     private JButton openDocumentButton;
+    private JButton suggestTabooWordsButton;
 
     public GuestUserHomePage() {
         applyToBecomeOrdinaryButton.addActionListener(new ActionListener() {
