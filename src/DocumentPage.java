@@ -23,13 +23,20 @@ public class DocumentPage {
         lockButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setEditable(!textArea1.isEditable());
+
                 ((AbstractDocument) textArea1.getDocument()).setDocumentFilter(new DSSMainFilter());
-                if(!textArea1.isEditable()){
-                    lockButton.setText("Lock");
+
+                if(currentDocument.changeDocumentLock(!textArea1.isEditable())){
+
+                    textArea1.setEditable(!textArea1.isEditable());
+                }
+
+
+                if(textArea1.isEditable()){
+                    lockButton.setText("Unlock");
                 }
                 else{
-                    lockButton.setText("Unlock");
+                    lockButton.setText("Lock");
                 }
 
             }

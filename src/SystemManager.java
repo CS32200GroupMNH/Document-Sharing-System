@@ -16,6 +16,11 @@ public class SystemManager {
     }
     private JPanel cards;
     private String userType;
+
+    public String getUserName() {
+        return userName;
+    }
+
     private String userName;
     private Connection dataBaseConnection;
 
@@ -129,6 +134,11 @@ public class SystemManager {
         return false;
     }
 
+    public boolean saveHistoryCommands(){
+        return false;
+    }
+
+
     public ArrayList<Document> getAllDocuments(){
         ArrayList<Document> docArray = new ArrayList<Document>(3);
 
@@ -137,9 +147,10 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
+                System.out.println(result.getString("lockedBy"));
                 docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
             }
-        }catch (Exception e){System.out.println(e);}
+        }catch (Exception e){System.out.println(e + "147");}
         return docArray;
 
     }
@@ -156,6 +167,28 @@ public class SystemManager {
             }
         }catch (Exception e){System.out.println(e);}
 
+
+        return false;
+    }
+
+    public boolean lockDocument(String documentID){
+        try{
+            String uniqueID = UUID.randomUUID().toString();
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET lockedBy = '" + this.userName + "' WHERE documentID = '" + documentID + "';");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+
+        return false;
+    }
+
+    public boolean unLockDocument(String documentID){
+        try{
+            String uniqueID = UUID.randomUUID().toString();
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET lockedBy = NULL WHERE documentID = '" + documentID + "';");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
 
         return false;
     }
