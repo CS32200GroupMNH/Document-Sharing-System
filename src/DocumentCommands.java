@@ -2,6 +2,7 @@ import java.util.Date;
 
 public class DocumentCommands {
     private int version;
+
     private String documentID;
     private String updatedBy;
     private String content;
@@ -54,6 +55,26 @@ public class DocumentCommands {
         return commands.toString();
 
 
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public String getDocumentID() {
+        return documentID;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getUpdateDate() {
+        return updateDate;
     }
 
     public static String createOldFile(String commands, String doc){

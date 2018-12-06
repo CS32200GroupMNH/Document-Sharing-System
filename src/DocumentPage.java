@@ -47,6 +47,20 @@ public class DocumentPage {
                 currentDocument.updateDocument(textArea1.getText());
             }
         });
+        versionsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DocumentVersionDialog dialog = new DocumentVersionDialog();
+
+                dialog.setLocation(250,250);
+                dialog.setLocationRelativeTo( textArea1);
+                dialog.pack();
+
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY());
+
+                dialog.setVisible(true);
+            }
+        });
     }
 
     public JPanel getDocumentPanel() {
