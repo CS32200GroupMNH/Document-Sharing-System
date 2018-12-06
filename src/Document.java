@@ -49,7 +49,7 @@ public class Document {
 
         StringBuilder newDocumentContent = new StringBuilder("");
 
-        HashSet<String> tabooWordsList = getTabooWords(); //getTabooWords() returns a hashset from system manager
+        HashSet<String> tabooWordsList = getTabooWords(documentID); //getTabooWords(String documentID) returns a hashset from system manager
         String[] documentWords = getDocumentContent().split("\n");
 
         for(int i = 0; i<documentWords.length; i++ )
@@ -63,7 +63,7 @@ public class Document {
             }
         }
 
-        documentContent = newDocumentContent.toString();
+        this.documentContent = newDocumentContent.toString();
         return isThereUNK;
     }
 
