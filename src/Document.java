@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class Document {
 
     private String documentID;
@@ -28,6 +30,40 @@ public class Document {
             locked = true;
         }
         System.out.println(lockedBy);
+    }
+
+    //This function checks if a particular String is in the HashSet
+    public boolean checkForWord(String word, HashSet<String> list)
+    {
+        if (list.contains(word)){
+            return true;
+        }
+
+        return false;
+    }
+
+    //checks document for taboo word and replaces with UNK, returns true if a words is found in the document
+    public boolean checkDocumentForTabooWords()
+    {
+        boolean isThereUNK = false;
+
+        StringBuilder newDocumentContent = new StringBuilder("");
+
+        HashSet<String> tabooWordsList = getTabooWords(); //getTabooWords() returns a hashset from system manager
+        String[] documentWords = getDocumentContent().split("\n");
+
+        for(int i = 0; i<documentWords.length; i++ )
+        {
+            if (checkForWord(documentWords[i], tabooWordsList)){
+                newDocumentContent.append("UNK"+"\n");
+                isThereUNK = true;
+            }
+            else{
+                newDocumentContent.append(documentWords[i]+"\n");
+            }
+        }
+
+        return isThereUNK;
     }
 
     public boolean updateDocument(String s){
