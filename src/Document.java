@@ -63,6 +63,7 @@ public class Document {
             }
         }
 
+        documentContent = newDocumentContent.toString();
         return isThereUNK;
     }
 
