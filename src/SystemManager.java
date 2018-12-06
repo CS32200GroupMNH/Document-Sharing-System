@@ -193,4 +193,20 @@ public class SystemManager {
         return false;
     }
 
+    public ArrayList<DocumentCommands> getDocumentVersions(String documentID){
+        ArrayList<DocumentCommands> docArray = new ArrayList<DocumentCommands>(3);
+
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM DocumentUpdates WHERE documentID = '"+ documentID +"';");
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                System.out.println(result.getString("lockedBy"));
+                docArray.add(new DocumentCommands(result.getInt("versionNumber"),documentID,result.getString("updatedBY"),"December 5 2018",result.getString("commands")));
+            }
+        }catch (Exception e){System.out.println(e + "147");}
+        return docArray;
+
+    }
+
 }

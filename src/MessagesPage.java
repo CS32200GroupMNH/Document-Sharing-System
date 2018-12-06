@@ -16,6 +16,8 @@ public class MessagesPage  {
         frame.pack();
         frame.setVisible(true);
 
+
+
        // TableColumnModel  t = m.table1.getColumnModel();
 
         String[] columns = new String[] {

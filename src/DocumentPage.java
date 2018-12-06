@@ -72,7 +72,7 @@ public class DocumentPage {
         public void replace(DocumentFilter.FilterBypass fb, int offset, int length,
                             String text, AttributeSet attrs) throws BadLocationException {
 
-
+            System.out.println(text);
             if (text.equals(" ")) {
                 super.replace(fb, offset , length, "\n", attrs);
                 return;
@@ -84,12 +84,14 @@ public class DocumentPage {
         @Override
         public void insertString(DocumentFilter.FilterBypass fb, int offset,
                                  String text, AttributeSet attr) throws BadLocationException {
+            System.out.println(text);
             super.insertString(fb, offset, text, attr);
         }
 
         @Override
         public void remove(DocumentFilter.FilterBypass fb, int offset, int length)
                 throws BadLocationException {
+            System.out.println(offset);
             super.remove(fb, offset, length);
         }
 

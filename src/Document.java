@@ -15,6 +15,12 @@ public class Document {
         documentType = type;
         documentOwner = owner;
         documentContent = contents;
+
+
+
+
+
+
         if(lockedBy == null){
             locked = false;
         }
