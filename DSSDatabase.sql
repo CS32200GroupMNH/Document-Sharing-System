@@ -15,11 +15,15 @@ CREATE TABLE TabooWords(location VARCHAR(127) REFERENCES Documents(documentID), 
 CREATE TABLE Documents(documentID VARCHAR(127) primary key, documentName VARCHAR(127), owner VARCHAR(127) REFERENCES users(userName), documentType VARCHAR(127), lockedBy VARCHAR(127) REFERENCES users(userName), contents TEXT);
 CREATE TABLE DocumentUpdates(versionNumber INT primary key, documentID VARCHAR(127) REFERENCES Documents(documentID), commands TEXT, updatedBY VARCHAR(127) REFERENCES users(userName));
 
+
+
 INSERT INTO users VALUES ('admin','password','SU');
 INSERT INTO users VALUES ('nabhan', 'password123','OU');
 INSERT INTO users VALUES ('naeem', 'password456','OU');
 INSERT INTO users VALUES ('hamza', 'password789','OU');
 INSERT INTO users VALUES ('kareem', 'password321','OU');
+
+INSERT INTO TabooWords VALUES ('GLOBAL','Crap');
 
 INSERT INTO userInformation VALUES ('nabhan','Nabhan','Maswood','none');
 

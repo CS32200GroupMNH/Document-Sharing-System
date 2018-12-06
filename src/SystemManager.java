@@ -209,4 +209,19 @@ public class SystemManager {
 
     }
 
+    public HashSet<String> getTabooWords(String documentID){
+        HashSet<String> wordSet = new HashSet<String>();
+
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM TabooWords WHERE location = '"+ documentID +" OR location = 'GLOBAL';");
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                wordSet.add(result.getString("word"));
+            }
+        }catch (Exception e){System.out.println(e + "222");}
+
+        return wordSet;
+    }
+
 }
