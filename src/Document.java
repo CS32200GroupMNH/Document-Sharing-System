@@ -45,11 +45,13 @@ public class Document {
     //checks document for taboo word and replaces with UNK, returns true if a words is found in the document
     public boolean checkDocumentForTabooWords()
     {
+        SystemManager s = SystemManager.getInstance();
+
         boolean isThereUNK = false;
 
         StringBuilder newDocumentContent = new StringBuilder("");
 
-        HashSet<String> tabooWordsList = getTabooWords(documentID); //getTabooWords(String documentID) returns a hashset from system manager
+        HashSet<String> tabooWordsList = s.getTabooWords(documentID); //getTabooWords(String documentID) returns a hashset from system manager
         String[] documentWords = getDocumentContent().split("\n");
 
         for(int i = 0; i<documentWords.length; i++ )
