@@ -56,8 +56,35 @@ public class DocumentPage {
                 dialog.setLocationRelativeTo( textArea1);
                 dialog.pack();
 
-                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY());
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/4);
 
+                dialog.setVisible(true);
+            }
+        });
+        sharingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // SystemManager s = SystemManager.getInstance();
+                if (true){
+                    DocumentSharingDialog dialog = new DocumentSharingDialog("Shared");
+                    dialog.setLocationRelativeTo( textArea1);
+                    dialog.pack();
+                    dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/4);
+                    dialog.setVisible(true);
+
+                }
+                else{
+                    JOptionPane.showMessageDialog(DocumentPanel,"You are not the Owner.");
+                }
+            }
+        });
+        complaintsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DocumentComplaintsDialog dialog = new DocumentComplaintsDialog();
+                dialog.setLocationRelativeTo( textArea1);
+                dialog.pack();
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/4);
                 dialog.setVisible(true);
             }
         });
