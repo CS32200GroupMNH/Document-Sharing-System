@@ -9,8 +9,10 @@ public class DocumentSharingDialog extends JDialog {
     private JTextField userNameField;
     private JLabel satusLabel;
     private JButton manageButton;
+    private Document currentDocument;
 
-    public DocumentSharingDialog(String documentType) {
+    public DocumentSharingDialog(Document d) {
+        currentDocument = d;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -67,6 +69,7 @@ public class DocumentSharingDialog extends JDialog {
             }
         });
 
+        String documentType = d.getDocumentType();
         documentTypeBox.setSelectedItem(documentType);
         if(documentType.equals("Shared")){
             userNameField.setEditable(true);
@@ -80,6 +83,18 @@ public class DocumentSharingDialog extends JDialog {
 
     private void onOK() {
         // add your code here
+
+
+
+        currentDocument.changeDocumentType((String) documentTypeBox.getSelectedItem());
+        currentDocument.inviteToDocument(userNameField.getText()) ;
+
+
+
+
+
+
+
         dispose();
     }
 
@@ -89,7 +104,7 @@ public class DocumentSharingDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        DocumentSharingDialog dialog = new DocumentSharingDialog("Shared");
+        DocumentSharingDialog dialog = new DocumentSharingDialog(null);
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

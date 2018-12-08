@@ -11,7 +11,7 @@ public class Document {
 
     private String documentContent = "";
 
-    public Document(String id, String name, String owner, String type, String lockedBy, String contents) {
+    public Document(String id, String name, String owner, String type, String lockedName, String contents) {
         documentID = id;
         documentName = name;
         documentType = type;
@@ -19,18 +19,18 @@ public class Document {
         documentContent = contents;
 
 
-
-
-
-
-        if(lockedBy == null){
+        if(lockedName == null){
             locked = false;
         }
         else{
             locked = true;
+            lockedBy = lockedName;
+
         }
-        System.out.println(lockedBy);
+
     }
+
+
 
     //This function checks if a particular String is in the HashSet
     public boolean checkForWord(String word, HashSet<String> list)
@@ -129,7 +129,38 @@ public class Document {
 
     }
 
+    public boolean changeDocumentType(String docType){
+        if(docType.equals(this.documentType)){
+            return true;
+        }
 
+        SystemManager s = SystemManager.getInstance();
+        if (s.setDocumentType(this.documentID,docType)){
+            this.documentType = docType;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean inviteToDocument(String userNameInvite){
+        SystemManager s  = SystemManager.getInstance();
+
+        if(!userNameInvite.equals("")){
+            return s.inviteUserToDocument(this.documentID,userNameInvite);
+        }
+        else{
+            return true;
+        }
+
+
+
+
+    }
+
+    @Override
+    public String toString() {
+        return this.getDocumentName();
+    }
 
     public String getDocumentID() {
         return documentID;
