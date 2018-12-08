@@ -2,6 +2,7 @@ import javax.print.Doc;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class OUHomePage {
@@ -16,6 +17,7 @@ public class OUHomePage {
     private JButton searchUsersButton1;
     private JList docList;
     private JButton openDocumentButton;
+    private JLabel ImageLabel;
 
 
     public OUHomePage() {
@@ -46,6 +48,11 @@ public class OUHomePage {
         }
         docList.setModel(docListModel);
 
+    }
+
+    public void setImage(URL image){
+        ImageIcon  icon = new ImageIcon(image);
+        ImageLabel.setIcon(icon);
     }
 
     public static void main(String[] args) {

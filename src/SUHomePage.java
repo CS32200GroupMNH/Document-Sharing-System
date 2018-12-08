@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.net.URL;
 
 public class SUHomePage {
 
@@ -12,9 +13,15 @@ public class SUHomePage {
     private JButton searchUsersButton1;
     private JList list1;
     private JButton openDocumentButton;
+    private JLabel ImageLabel;
 
     public JPanel getSUHPPanel() {
         return SUHPPanel;
+    }
+
+    public void setImage(URL image){
+        ImageIcon  icon = new ImageIcon(image);
+        ImageLabel.setIcon(icon);
     }
 
     public static void main(String[] args) {
