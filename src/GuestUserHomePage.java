@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GuestUserHomePage {
 
@@ -8,7 +9,7 @@ public class GuestUserHomePage {
     private JPanel GUPanel;
     private JPanel SUHPPanel;
     private JButton applyToBecomeOrdinaryButton;
-    private JList list1;
+    private JList documentLIst;
     private JButton openDocumentButton;
     private JButton suggestTabooWordsButton;
 
@@ -20,10 +21,26 @@ public class GuestUserHomePage {
                 s.changePage("RegistrationPage");
             }
         });
+        openDocumentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.openDocumentFromObject((Document) documentLIst.getSelectedValue());
+            }
+        });
     }
 
     public JPanel getGUPanel() {
         return GUPanel;
+    }
+
+    public void listDocuments(ArrayList<Document> docArray){
+        DefaultListModel docListModel = new DefaultListModel();
+        for (Document d: docArray) {
+            docListModel.addElement(d);
+        }
+        documentLIst.setModel(docListModel);
+
     }
 
     public static void main(String[] args) {
@@ -33,4 +50,6 @@ public class GuestUserHomePage {
         frame.pack();
         frame.setVisible(true);
     }
+
+
 }

@@ -19,6 +19,7 @@ public class DocumentPage {
     private JTextArea textArea1;
     private JButton lockButton;
     private JLabel lockLabel;
+    private JButton homeButton;
 
     public DocumentPage() {
         lockButton.addActionListener(new ActionListener() {
@@ -99,6 +100,14 @@ public class DocumentPage {
                 dialog.setVisible(true);
             }
         });
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("HELLO");
+                SystemManager s = SystemManager.getInstance();
+                s.goHome();
+            }
+        });
     }
 
     public JPanel getDocumentPanel() {
@@ -106,9 +115,42 @@ public class DocumentPage {
     }
 
     public void setDocumentData(Document d){
+        SystemManager s = SystemManager.getInstance();
         currentDocument = d;
+
+
+         if(this.currentDocument.getDocumentOwner().equals(s.getUserName()) || s.getUserType().equals("SU")){
+            this.setReadWrite();
+        }
+        else if (s.getUserType().equals("GU") || this.currentDocument.getDocumentType().equals("Public")){
+            this.setReadOnly();
+        }
+        else{
+             if(d.isLocked()){
+                 this.setReadOnly();
+             }else {
+                 this.setReadWrite();
+                 sharingButton.setVisible(false);
+             }
+        }
+
+
         this.setLockLabelText(d.getLockedBy());
         textArea1.setText(currentDocument.getDocumentContent());
+    }
+
+    private void setReadOnly(){
+        saveButton.setVisible(false);
+        lockButton.setVisible(false);
+        sharingButton.setVisible(false);
+
+    }
+
+    private void setReadWrite(){
+        saveButton.setVisible(true);
+        lockButton.setVisible(true);
+        sharingButton.setVisible(true);
+
     }
 
     private void setLockLabelText(String name){

@@ -17,7 +17,9 @@ CREATE TABLE DocumentUpdates(versionNumber INT , documentID VARCHAR(127) REFEREN
 CONSTRAINT update_key PRIMARY KEY (versionNumber,documentID)
 );
 
-
+CREATE TABLE SharedDocuments(sharedWith VARCHAR(127) REFERENCES users(userName), documentID VARCHAR(127) REFERENCES Documents(documentID),
+ CONSTRAINT sh_doc_key PRIMARY KEY (sharedWith, documentID)
+ );
 
 
 

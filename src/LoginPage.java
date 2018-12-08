@@ -24,7 +24,7 @@ public class LoginPage {
 
                 if(s.logIn(userNameField.getText(),passwordField1.getPassword())){///User Found and password is correct
 
-                    s.changePage("HomePage");
+                    //s.changePage("HomePage");
 
 
                 }
@@ -41,7 +41,7 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.changePage("GuestUserPage");
+                s.logInAsGuest();;
                 incorrectPasswordLabel.setText("");
                 passwordField1.setText("");
             }

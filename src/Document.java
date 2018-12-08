@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Document {
@@ -10,6 +12,8 @@ public class Document {
     private String lockedBy;
 
     private String documentContent = "";
+
+
 
     public Document(String id, String name, String owner, String type, String lockedName, String contents) {
         documentID = id;
@@ -145,16 +149,25 @@ public class Document {
     public boolean inviteToDocument(String userNameInvite){
         SystemManager s  = SystemManager.getInstance();
 
-        if(!userNameInvite.equals("")){
+        if(!userNameInvite.equals("") && !(this.documentOwner.equals(userNameInvite))){
             return s.inviteUserToDocument(this.documentID,userNameInvite);
         }
         else{
             return true;
         }
 
+    }
 
+    public ArrayList<String> getSharedUsers(){
+        SystemManager s = SystemManager.getInstance();
+      ArrayList<String> userList =  s.getUsersSharedWith(this.documentID);
 
+          return userList;
+    }
 
+    public boolean removeUserFromDocument(String userName){
+        SystemManager s = SystemManager.getInstance();
+        return s.removeSharedUser(this.documentID, userName);
     }
 
     @Override

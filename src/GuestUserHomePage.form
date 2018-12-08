@@ -90,7 +90,7 @@
               <text value="Public Documents"/>
             </properties>
           </component>
-          <component id="1c9a3" class="javax.swing.JList" binding="list1" default-binding="true">
+          <component id="1c9a3" class="javax.swing.JList" binding="documentLIst">
             <constraints>
               <grid row="11" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="2" anchor="1" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>

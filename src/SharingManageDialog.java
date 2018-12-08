@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class SharingManageDialog extends JDialog {
     private JPanel contentPane;
@@ -7,7 +8,9 @@ public class SharingManageDialog extends JDialog {
     private JButton buttonCancel;
     private JList userNameList;
 
-    public SharingManageDialog() {
+    private Document currentDocument;
+
+    public SharingManageDialog(Document d) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(removeButton);
@@ -38,15 +41,43 @@ public class SharingManageDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        this.listUsers(d.getSharedUsers());
+        this.currentDocument = d;
+    }
+
+    public void listUsers(ArrayList<String> userList){
+        DefaultListModel docListModel = new DefaultListModel();
+        for (String s: userList) {
+            docListModel.addElement(s);
+        }
+        userNameList.setModel(docListModel);
+
+
+
     }
 
     private void onPress() {
-        // add your code here
+
         DefaultListModel model = (DefaultListModel) userNameList.getModel();
+        String user = (String) userNameList.getSelectedValue();
         int selectedIndex = userNameList.getSelectedIndex();
-        if (selectedIndex != -1) {
-            model.remove(selectedIndex);
+
+
+
+        if (currentDocument.removeUserFromDocument(user)) {
+            if (selectedIndex != -1) {
+                model.remove(selectedIndex);
+            }
         }
+        else{
+            JOptionPane.showMessageDialog(contentPane,
+                    "User was unable to be removed.",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
+
 
     }
 
@@ -56,7 +87,7 @@ public class SharingManageDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        SharingManageDialog dialog = new SharingManageDialog();
+        SharingManageDialog dialog = new SharingManageDialog(null);
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

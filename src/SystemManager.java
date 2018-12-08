@@ -15,7 +15,12 @@ public class SystemManager {
         return ourInstance;
     }
     private JPanel cards;
-    private String userType;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    private String userType = "OU";
 
     public String getUserName() {
         return userName;
@@ -92,6 +97,7 @@ public class SystemManager {
                 if(Arrays.equals(result.getString("password").toCharArray(),password)) {
                     this.userName = userName;
                     homePanel.listDocuments(getAllDocuments());
+                    this.changePage("HomePage");
                     return true;
                 }
             }
@@ -102,6 +108,23 @@ public class SystemManager {
 
     public void logInAsGuest(){
         this.userType = "GU";
+        guestUserPanel.listDocuments(this.getAllDocuments());
+        this.changePage("GuestUserPage");
+    }
+
+    public void goHome(){
+        if(this.userType.equals("GU")){
+            this.changePage("GuestUserPage");
+        }
+        else if (this.userType.equals("OU")){
+            homePanel.listDocuments(getAllDocuments());
+            this.changePage("HomePage");
+        }
+        else if(this.userType.equals("SU")){
+            homePanel.listDocuments(getAllDocuments());
+            this.changePage("HomePage");
+        }
+
     }
 
     public boolean applyForMembership(String userName, char[] password, String name, String interests) {
@@ -147,13 +170,23 @@ public class SystemManager {
         ArrayList<Document> docArray = new ArrayList<Document>(3);
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE owner = '"+ this.userName +"';");
 
+            String getSharedDocIds = "(SELECT documentID FROM SharedDocuments WHERE sharedWith = '" + this.userName + "') AS B";
+            String getDocumentsSharedWith = "(SELECT * FROM Documents NATURAL JOIN " + getSharedDocIds + ")";
+            String getDocumentsOwnerBy = "(SELECT * FROM Documents WHERE owner = '" + this.userName + "') AS D";
+            String getPublicAndRDocs = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted'";
+            String sqlQuery = "SELECT * FROM " + getDocumentsOwnerBy + " UNION " + getDocumentsSharedWith + " UNION " + getPublicAndRDocs + ";";
+            System.out.println(sqlQuery);
+            if (this.userType.equals("GU")){
+                sqlQuery = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted';";
+            }
 
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement(sqlQuery);
 
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
+
                 System.out.println(result.getString("lockedBy"));
                 docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
             }
@@ -240,13 +273,70 @@ public class SystemManager {
         try{
             PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET documentType = '" + documentType + "' WHERE documentID = '" + documentID + "';");
             statement1.executeUpdate();
+
+            if(documentType.equals("Private")){
+                this.removeAllSharedUsers(documentID);
+            }
+
             return true;
         }catch (Exception e){System.out.println(e);}
         return false;
     }
 
     public boolean inviteUserToDocument(String documentID, String userName){
-        //SENDS USER THE INVITATION TO JOIN THE DOCUMENT
+
+        ///SEND INVIATION FIRST USER ACCEPTS THE INVITAIOTN
+        return this.addSharedUser(documentID,userName);
+
+
+      //  return false;
+    }
+
+    public ArrayList<String> getUsersSharedWith(String documentID){
+        ArrayList<String> userList = new ArrayList<String>();
+
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM SharedDocuments WHERE documentID = '" + documentID + "';");
+            ResultSet result = statement1.executeQuery();
+            while (result.next()) {
+                userList.add(result.getString("sharedWith"));
+            }
+        }catch (Exception e){System.out.println(e + "279");}
+
+
+
+        return userList;
+    }
+
+    public boolean addSharedUser(String documentID, String userName){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO SharedDocuments VALUES ('" + userName + "','" + documentID + "')");
+            statement1.executeUpdate();
+
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+    }
+
+    public boolean removeSharedUser(String documentID, String userName){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("DELETE FROM SharedDocuments WHERE sharedWith = '" + userName + "' AND documentID = '" + documentID + "'");
+            statement1.executeUpdate();
+
+            return true;
+        }catch (Exception e){System.out.println(e);}
+
+        return false;
+    }
+
+    public boolean removeAllSharedUsers(String documentID){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("DELETE FROM SharedDocuments WHERE documentID = '" + documentID + "'");
+            statement1.executeUpdate();
+
+            return true;
+        }catch (Exception e){System.out.println(e);}
+
         return false;
     }
 

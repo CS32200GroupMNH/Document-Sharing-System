@@ -59,7 +59,7 @@ public class DocumentSharingDialog extends JDialog {
         manageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SharingManageDialog dialog = new SharingManageDialog();
+                SharingManageDialog dialog = new SharingManageDialog(currentDocument);
                 dialog.setLocationRelativeTo(contentPane);
                 dialog.setLocationRelativeTo( contentPane);
                 dialog.pack();
@@ -87,6 +87,8 @@ public class DocumentSharingDialog extends JDialog {
 
 
         currentDocument.changeDocumentType((String) documentTypeBox.getSelectedItem());
+
+
         currentDocument.inviteToDocument(userNameField.getText()) ;
 
 

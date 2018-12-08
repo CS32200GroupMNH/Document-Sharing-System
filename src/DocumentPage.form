@@ -56,6 +56,12 @@
               <text value="Complaints"/>
             </properties>
           </component>
+          <component id="378b2" class="javax.swing.JButton" binding="homeButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Home"/>
+            </properties>
+          </component>
           <hspacer id="63d19">
             <constraints/>
           </hspacer>
