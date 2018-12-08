@@ -59,7 +59,7 @@
           <hspacer id="63d19">
             <constraints/>
           </hspacer>
-          <component id="de63d" class="javax.swing.JLabel">
+          <component id="de63d" class="javax.swing.JLabel" binding="lockLabel">
             <constraints/>
             <properties>
               <horizontalTextPosition value="11"/>

@@ -100,6 +100,10 @@ public class SystemManager {
         return false;
     }
 
+    public void logInAsGuest(){
+        this.userType = "GU";
+    }
+
     public boolean applyForMembership(String userName, char[] password, String name, String interests) {
         try{
             PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO userapplications VALUES ('"+ userName +"', '"+ String.valueOf(password)+"', '"+name+"', '"+interests+"');");
@@ -144,6 +148,9 @@ public class SystemManager {
 
         try {
             PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE owner = '"+ this.userName +"';");
+
+
+
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
@@ -155,9 +162,9 @@ public class SystemManager {
 
     }
 
-    public boolean openDocument(String documentName){
+    public boolean openDocumentByID(String documentID){
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE documentName = '"+ documentName +"';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE documentID = '"+ documentID +"';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
@@ -169,6 +176,11 @@ public class SystemManager {
 
 
         return false;
+    }
+
+    public void openDocumentFromObject(Document d){
+        documentPanel.setDocumentData(d);
+        changePage("DocumentPage");
     }
 
     public boolean lockDocument(String documentID){
@@ -223,5 +235,23 @@ public class SystemManager {
 
         return wordSet;
     }
+
+    public boolean setDocumentType(String documentID,String documentType){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET documentType = '" + documentType + "' WHERE documentID = '" + documentID + "';");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+    }
+
+    public boolean inviteUserToDocument(String documentID, String userName){
+        //SENDS USER THE INVITATION TO JOIN THE DOCUMENT
+        return false;
+    }
+
+
+
+
 
 }

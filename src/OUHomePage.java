@@ -30,7 +30,7 @@ public class OUHomePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.openDocument((String) docList.getSelectedValue());
+                s.openDocumentFromObject((Document) docList.getSelectedValue());
             }
         });
     }
@@ -42,7 +42,7 @@ public class OUHomePage {
     public void listDocuments(ArrayList<Document> docArray){
         DefaultListModel docListModel = new DefaultListModel();
         for (Document d: docArray) {
-            docListModel.addElement(d.getDocumentName());
+            docListModel.addElement(d);
         }
         docList.setModel(docListModel);
 

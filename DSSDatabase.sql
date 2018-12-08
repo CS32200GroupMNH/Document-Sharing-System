@@ -13,7 +13,11 @@ CREATE TABLE Messages(messageID VARCHAR(127) primary key, userName VARCHAR(127) 
 CREATE TABLE TabooWords(location VARCHAR(127) REFERENCES Documents(documentID), word VARCHAR(127));
 
 CREATE TABLE Documents(documentID VARCHAR(127) primary key, documentName VARCHAR(127), owner VARCHAR(127) REFERENCES users(userName), documentType VARCHAR(127), lockedBy VARCHAR(127) REFERENCES users(userName), contents TEXT);
-CREATE TABLE DocumentUpdates(versionNumber INT primary key, documentID VARCHAR(127) REFERENCES Documents(documentID), commands TEXT, updatedBY VARCHAR(127) REFERENCES users(userName));
+CREATE TABLE DocumentUpdates(versionNumber INT , documentID VARCHAR(127) REFERENCES Documents(documentID), commands TEXT, updatedBY VARCHAR(127) REFERENCES users(userName),
+CONSTRAINT update_key PRIMARY KEY (versionNumber,documentID)
+);
+
+
 
 
 

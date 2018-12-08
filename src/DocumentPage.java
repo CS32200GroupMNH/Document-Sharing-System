@@ -18,6 +18,7 @@ public class DocumentPage {
     private JButton complaintsButton;
     private JTextArea textArea1;
     private JButton lockButton;
+    private JLabel lockLabel;
 
     public DocumentPage() {
         lockButton.addActionListener(new ActionListener() {
@@ -34,17 +35,27 @@ public class DocumentPage {
 
                 if(textArea1.isEditable()){
                     lockButton.setText("Unlock");
+
                 }
                 else{
                     lockButton.setText("Lock");
                 }
+
+                setLockLabelText(currentDocument.getLockedBy());
 
             }
         });
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentDocument.updateDocument(textArea1.getText());
+                boolean saved = currentDocument.updateDocument(textArea1.getText());
+
+                if(saved){
+                    JOptionPane.showMessageDialog(DocumentPanel,"Document Saved");
+                }
+                else{
+                    JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
         versionsButton.addActionListener(new ActionListener() {
@@ -56,8 +67,35 @@ public class DocumentPage {
                 dialog.setLocationRelativeTo( textArea1);
                 dialog.pack();
 
-                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY());
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
 
+                dialog.setVisible(true);
+            }
+        });
+        sharingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // SystemManager s = SystemManager.getInstance();
+                if (true){
+                    DocumentSharingDialog dialog = new DocumentSharingDialog(currentDocument);
+                    dialog.setLocationRelativeTo( textArea1);
+                    dialog.pack();
+                    dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
+                    dialog.setVisible(true);
+
+                }
+                else{
+                    JOptionPane.showMessageDialog(DocumentPanel,"You are not the Owner.");
+                }
+            }
+        });
+        complaintsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DocumentComplaintsDialog dialog = new DocumentComplaintsDialog();
+                dialog.setLocationRelativeTo( textArea1);
+                dialog.pack();
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
                 dialog.setVisible(true);
             }
         });
@@ -69,7 +107,20 @@ public class DocumentPage {
 
     public void setDocumentData(Document d){
         currentDocument = d;
+        this.setLockLabelText(d.getLockedBy());
         textArea1.setText(currentDocument.getDocumentContent());
+    }
+
+    private void setLockLabelText(String name){
+
+        if(name == null){
+            this.lockLabel.setText("Unlocked");
+        }
+        else{
+            this.lockLabel.setText("Locked By: " + name);
+        }
+
+
     }
 
     public static void main(String[] args) {
