@@ -52,7 +52,9 @@ public class OUHomePage {
 
     public void setImage(URL image){
         ImageIcon  icon = new ImageIcon(image);
+
         ImageLabel.setIcon(icon);
+
     }
 
     public static void main(String[] args) {
@@ -62,6 +64,13 @@ public class OUHomePage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        try {
+            URL myURL = new URL("https://news.nationalgeographic.com/content/dam/news/2018/05/17/you-can-train-your-cat/02-cat-training-NationalGeographic_1484324.ngsversion.1526587209178.adapt.1900.1.jpg");
+            o.setImage(myURL);
+        }
+        catch (Exception e){System.out.println(e);}
+
        // final DefaultListModel fruitsName = new DefaultListModel();
 
        // fruitsName.addElement("Apple");

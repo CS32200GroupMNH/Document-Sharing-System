@@ -31,6 +31,15 @@ INSERT INTO users VALUES ('kareem', 'password321','OU');
 
 INSERT INTO TabooWords VALUES ('GLOBAL','Crap');
 
+INSERT INTO TabooWords VALUES ('GLOBAL','UNK');
+INSERT INTO TabooWords VALUES ('GLOBAL','snap');
+INSERT INTO TabooWords VALUES ('GLOBAL','apple');
+INSERT INTO TabooWords VALUES ('GLOBAL','pear');
+INSERT INTO TabooWords VALUES ('GLOBAL','foo');
+INSERT INTO TabooWords VALUES ('GLOBAL','bar');
+INSERT INTO TabooWords VALUES ('123','pasta');
+
+
 INSERT INTO userInformation VALUES ('nabhan','Nabhan','Maswood','none');
 
 INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','admin','',null,'');

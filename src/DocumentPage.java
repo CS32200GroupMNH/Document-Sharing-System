@@ -49,14 +49,23 @@ public class DocumentPage {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean saved = currentDocument.updateDocument(textArea1.getText());
+                boolean foundTabooWord = currentDocument.checkDocumentForTabooWords(textArea1.getText());
 
-                if(saved){
-                    JOptionPane.showMessageDialog(DocumentPanel,"Document Saved");
+                if(foundTabooWord){
+                    textArea1.setText(currentDocument.getDocumentContent());
+                    JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
                 }
                 else{
-                    JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
+                    boolean saved = currentDocument.updateDocument(textArea1.getText());
+
+                    if(saved){
+                        JOptionPane.showMessageDialog(DocumentPanel,"Document Saved");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
+                    }
                 }
+
             }
         });
         versionsButton.addActionListener(new ActionListener() {
@@ -103,9 +112,17 @@ public class DocumentPage {
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("HELLO");
+                boolean foundTabooWord = currentDocument.checkDocumentForTabooWords(textArea1.getText());
                 SystemManager s = SystemManager.getInstance();
-                s.goHome();
+                if(foundTabooWord){
+                    textArea1.setText(currentDocument.getDocumentContent());
+                    JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                    int a=JOptionPane.showConfirmDialog(DocumentPanel,"Unsaved changes will be discarded. Are you sure you want to go home?");
+                    if(a==JOptionPane.YES_OPTION){
+                        s.goHome();
+                    }
             }
         });
     }

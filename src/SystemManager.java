@@ -258,10 +258,14 @@ public class SystemManager {
         HashSet<String> wordSet = new HashSet<String>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM TabooWords WHERE location = '"+ documentID +" OR location = 'GLOBAL';");
+            String sql = "SELECT * FROM TabooWords WHERE location = '"+ documentID +"' OR location = 'GLOBAL';";
+            System.out.println(sql);
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement(sql);
+
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
+                System.out.println(result.getString("word"));
                 wordSet.add(result.getString("word"));
             }
         }catch (Exception e){System.out.println(e + "222");}
