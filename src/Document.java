@@ -21,6 +21,9 @@ public class Document {
 
 
 
+
+
+
     public Document(String id, String name, String owner, String type, String lockedName, String contents, int docVersion) {
         documentID = id;
         documentName = name;
@@ -96,7 +99,7 @@ public class Document {
         boolean savedHistoryCommands = false;
 
         if(this.locked){
-            savedDoc = s1.saveDocument(this);
+            savedDoc = s1.saveDocument(this,s);
         }
 
         if(savedDoc){

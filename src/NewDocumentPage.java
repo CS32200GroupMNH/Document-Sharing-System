@@ -15,7 +15,7 @@ public class NewDocumentPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.changePage("HomePage");
+                s.goHome();
             }
         });
         createDocumentButton.addActionListener(new ActionListener() {

@@ -120,8 +120,15 @@ public class DocumentPage {
                     JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
                     return;
                 }
+
+
+
                     int a=JOptionPane.showConfirmDialog(DocumentPanel,"Unsaved changes will be discarded. Are you sure you want to go home?");
                     if(a==JOptionPane.YES_OPTION){
+                        if(currentDocument.isLocked()){
+                            currentDocument.changeDocumentLock(!textArea1.isEditable());
+                            textArea1.setEditable(false);
+                        }
                         s.goHome();
                     }
             }

@@ -42,4 +42,4 @@ INSERT INTO TabooWords VALUES ('123','pasta');
 
 INSERT INTO userInformation VALUES ('nabhan','Nabhan','Maswood','none');
 
-INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','admin','',null,'');
+INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','admin','',null,'',0);

@@ -103,7 +103,9 @@ public class DocumentVersionDialog extends JDialog {
     }
 
     private void onOK() {
-      openOldDocFromVersion((Integer) versionTable.getValueAt(versionTable.getSelectedRow(), 0));
+        if(versionTable.getSelectedRow() >= 0) {
+            openOldDocFromVersion((Integer) versionTable.getValueAt(versionTable.getSelectedRow(), 0));
+        }
 
     }
 

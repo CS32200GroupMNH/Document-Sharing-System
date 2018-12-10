@@ -32,7 +32,9 @@ public class OUHomePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.openDocumentFromObject((Document) docList.getSelectedValue());
+                if(docList.getSelectedValue() != null) {
+                    s.openDocumentFromObject((Document) docList.getSelectedValue());
+                }
             }
         });
     }
@@ -48,6 +50,10 @@ public class OUHomePage {
         }
         docList.setModel(docListModel);
 
+    }
+
+    public void setUser(String userName){
+        UserNameLabel.setText("Username: " + userName);
     }
 
     public void setImage(URL image){
@@ -71,12 +77,7 @@ public class OUHomePage {
         }
         catch (Exception e){System.out.println(e);}
 
-       // final DefaultListModel fruitsName = new DefaultListModel();
 
-       // fruitsName.addElement("Apple");
-       // fruitsName.addElement("Grapes");
-       // fruitsName.addElement("Mango");
-      //  fruitsName.addElement("Peer");
 
     }
 }

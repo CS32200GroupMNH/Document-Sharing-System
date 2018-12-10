@@ -20,7 +20,7 @@ public class SystemManager {
         return userType;
     }
 
-    private String userType = "OU";
+    private String userType = "NA";
 
     public String getUserName() {
         return userName;
@@ -32,7 +32,8 @@ public class SystemManager {
     private ArrayList<Document> documentList;
 
     private LoginPage logInPanel = new LoginPage();
-    private OUHomePage homePanel =  new OUHomePage();
+    private OUHomePage ordinaryUserPanel =  new OUHomePage();
+    private SUHomePage superUserPanel = new SUHomePage();
     private RegistrationPage registrationPanel = new RegistrationPage();
     private GuestUserHomePage guestUserPanel = new GuestUserHomePage();
     private NewDocumentPage newDocumentPanel = new NewDocumentPage();
@@ -48,11 +49,12 @@ public class SystemManager {
 
 
         cards.add(logInPanel.getMainPanel(),"LoginPage");
-        cards.add(homePanel.getOUPanel(),"HomePage");
+        cards.add(ordinaryUserPanel.getOUPanel(),"OUHomePage");
         cards.add(registrationPanel.getRegestrationPanel(),"RegistrationPage");
         cards.add(guestUserPanel.getGUPanel(),"GuestUserPage");
         cards.add(newDocumentPanel.getNewDocumentPanel(),"NewDocumentPage");
         cards.add(documentPanel.getDocumentPanel(),"DocumentPage");
+        cards.add(superUserPanel.getSUHPPanel(),"SUHomePage");
 
         JFrame frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
@@ -89,15 +91,32 @@ public class SystemManager {
     public boolean logIn(String userName, char[] password){ ///Queries the Database and checks if the password is correct for the user in the database. Returns true if correct false otherwise
         System.out.println(userName);
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT password FROM users WHERE userName = '" + userName + "';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM users WHERE userName = '" + userName + "';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
                 String pass = result.getString("password");
+                this.userType = result.getString("userType");
                 if(Arrays.equals(result.getString("password").toCharArray(),password)) {
                     this.userName = userName;
-                    homePanel.listDocuments(getAllDocuments());
-                    this.changePage("HomePage");
+
+
+
+
+                    if(this.userType.equals("OU")){
+                        this.changePage("OUHomePage");
+                        ordinaryUserPanel.setUser(this.userName);
+                        ordinaryUserPanel.listDocuments(getAllDocuments());
+                    }
+                    else if(this.userType.equals("SU")){
+                        this.changePage("SUHomePage");
+                        superUserPanel.setUser(this.userName);
+                        superUserPanel.listDocuments(getAllDocuments());
+                    }
+
+
+
+
                     return true;
                 }
             }
@@ -117,12 +136,12 @@ public class SystemManager {
             this.changePage("GuestUserPage");
         }
         else if (this.userType.equals("OU")){
-            homePanel.listDocuments(getAllDocuments());
-            this.changePage("HomePage");
+            ordinaryUserPanel.listDocuments(getAllDocuments());
+            this.changePage("OUHomePage");
         }
         else if(this.userType.equals("SU")){
-            homePanel.listDocuments(getAllDocuments());
-            this.changePage("HomePage");
+            superUserPanel.listDocuments(getAllDocuments());
+            this.changePage("SUHomePage");
         }
 
     }
@@ -149,10 +168,10 @@ public class SystemManager {
         return false;
     }
 
-    public boolean saveDocument(Document d){
+    public boolean saveDocument(Document d,String docContent){
         try{
             String uniqueID = UUID.randomUUID().toString();
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + d.getDocumentContent() + "', versionCount = "+ d.getCurrentDocVersion() + " WHERE documentID = '" + d.getDocumentID() + "';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + docContent + "', versionCount = "+ d.getCurrentDocVersion() + " WHERE documentID = '" + d.getDocumentID() + "';");
             statement1.executeUpdate();
             return true;
         }catch (Exception e){System.out.println(e);}
