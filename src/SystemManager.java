@@ -140,9 +140,9 @@ public class SystemManager {
     public boolean createNewDocument(String docName, String docType) {
         try{
             String uniqueID = UUID.randomUUID().toString();
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Documents VALUES ('"+ uniqueID +"', '"+ docName+"', '"+this.userName+"', '"+docType+"',NULL,'');");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Documents VALUES ('"+ uniqueID +"', '"+ docName+"', '"+this.userName+"', '"+docType+"',NULL,'',0);");
             statement1.executeUpdate();
-             documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,""));
+             documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,"",0));
             return true;
         }catch (Exception e){System.out.println(e);}
 
@@ -152,7 +152,7 @@ public class SystemManager {
     public boolean saveDocument(Document d){
         try{
             String uniqueID = UUID.randomUUID().toString();
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + d.getDocumentContent() + "' WHERE documentID = '" + d.getDocumentID() + "';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + d.getDocumentContent() + "', versionCount = "+ d.getCurrentDocVersion() + " WHERE documentID = '" + d.getDocumentID() + "';");
             statement1.executeUpdate();
             return true;
         }catch (Exception e){System.out.println(e);}
@@ -161,7 +161,13 @@ public class SystemManager {
         return false;
     }
 
-    public boolean saveHistoryCommands(){
+    public boolean saveOldDocuments(DocumentCommands d){
+        try{
+            String uniqueID = UUID.randomUUID().toString();
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO OldDocuments VALUES ("+d.getVersion()+",'"+d.getDocumentID()+"','"+d.getDocCommands()+"','"+d.getUpdatedBy()+"','"+d.getUpdateDate()+"')");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
         return false;
     }
 
@@ -176,7 +182,7 @@ public class SystemManager {
             String getDocumentsOwnerBy = "(SELECT * FROM Documents WHERE owner = '" + this.userName + "') AS D";
             String getPublicAndRDocs = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted'";
             String sqlQuery = "SELECT * FROM " + getDocumentsOwnerBy + " UNION " + getDocumentsSharedWith + " UNION " + getPublicAndRDocs + ";";
-            System.out.println(sqlQuery);
+            //System.out.println(sqlQuery);
             if (this.userType.equals("GU")){
                 sqlQuery = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted';";
             }
@@ -187,12 +193,28 @@ public class SystemManager {
 
             while (result.next()) {
 
-                System.out.println(result.getString("lockedBy"));
-                docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
+                //System.out.println(result.getString("lockedBy"));
+                docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents"),result.getInt("versionCount")));
             }
         }catch (Exception e){System.out.println(e + "147");}
         return docArray;
 
+    }
+
+    public ArrayList<DocumentCommands> getOldDocuments(String documentID) {
+        ArrayList<DocumentCommands> docArray = new ArrayList<DocumentCommands>(3);
+
+        try {
+
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM OldDocuments WHERE documentID = '"+documentID+"' ORDER BY versionNumber ASC;");
+
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                docArray.add(new DocumentCommands(result.getInt("versionNumber"),documentID,result.getString("updatedBY"),result.getString("updateDate"),result.getString("commands")));
+            }
+        }catch (Exception e){System.out.println(e + "215");}
+        return docArray;
     }
 
     public boolean openDocumentByID(String documentID){
@@ -201,7 +223,7 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                documentPanel.setDocumentData( new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
+                documentPanel.setDocumentData( new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents"),result.getInt("versionCount")));
                 changePage("DocumentPage");
                 return true;
             }
@@ -246,7 +268,7 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                System.out.println(result.getString("lockedBy"));
+               // System.out.println(result.getString("lockedBy"));
                 docArray.add(new DocumentCommands(result.getInt("versionNumber"),documentID,result.getString("updatedBY"),"December 5 2018",result.getString("commands")));
             }
         }catch (Exception e){System.out.println(e + "147");}
@@ -259,13 +281,13 @@ public class SystemManager {
 
         try {
             String sql = "SELECT * FROM TabooWords WHERE location = '"+ documentID +"' OR location = 'GLOBAL';";
-            System.out.println(sql);
+           // System.out.println(sql);
             PreparedStatement statement1 = dataBaseConnection.prepareStatement(sql);
 
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                System.out.println(result.getString("word"));
+              //  System.out.println(result.getString("word"));
                 wordSet.add(result.getString("word"));
             }
         }catch (Exception e){System.out.println(e + "222");}

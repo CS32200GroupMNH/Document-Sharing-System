@@ -9,9 +9,13 @@ public class DocumentVersionDialog extends JDialog {
     private JButton buttonCancel;
     private JScrollPane gridScrollPane;
     private JTable versionTable;
+
+    private Document currentDocument;
+
     private ArrayList<DocumentCommands> docCommandList;
 
-    public DocumentVersionDialog() {
+    public DocumentVersionDialog(Document d) {
+        this.currentDocument = d;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -62,8 +66,13 @@ public class DocumentVersionDialog extends JDialog {
         versionTable.setModel(new DefaultTableModel(data, columns));
     }
 
-    private void setContent(ArrayList<DocumentCommands> docCommandArray){
-        docCommandList = docCommandArray;
+    public void setContent(ArrayList<DocumentCommands> docCommandArray){
+        System.out.println(docCommandArray.size());
+        String[] columns = new String[] {
+                "Version Number", "Saved By", "Date"
+        };
+
+        this.docCommandList = docCommandArray;
         Object[][] data = new Object[docCommandArray.size()][3];
 
         for(int i = 0; i < docCommandArray.size(); i++){
@@ -72,18 +81,29 @@ public class DocumentVersionDialog extends JDialog {
             data[i][1] = d.getUpdatedBy();
             data[i][2] = d.getUpdateDate();
         }
+
+        versionTable.setModel(new DefaultTableModel(data, columns));
     }
 
-    private void onOK() {
-        // add your code hereasdf
-        //get documentdata
-        OldDocumentDialog dialog = new OldDocumentDialog(2,"Hello\nMy\nname\nis\nnabhan");
+    private void getDocumentContent(int versionNum){
+        int amountOfVersions = docCommandList.size();
+
+        if(amountOfVersions == versionNum){
+            return;
+        }
+    }
+
+    private void openOldDocFromVersion(int versionNum){
+
+        OldDocumentDialog dialog = new OldDocumentDialog(versionNum,docCommandList.get(versionNum - 1).getDocCommands());
         dialog.pack();
         dialog.setLocationRelativeTo( contentPane);
 
         dialog.setVisible(true);
+    }
 
-
+    private void onOK() {
+      openOldDocFromVersion((Integer) versionTable.getValueAt(versionTable.getSelectedRow(), 0));
 
     }
 
@@ -93,9 +113,7 @@ public class DocumentVersionDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        DocumentVersionDialog dialog = new DocumentVersionDialog();
-        dialog.pack();
-        dialog.setVisible(true);
+
         System.exit(0);
     }
 }
