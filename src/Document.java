@@ -48,7 +48,7 @@ public class Document {
     //This function checks if a particular String is in the HashSet
     public boolean checkForWord(String word, HashSet<String> list)
     {
-        if (list.contains(word)){
+        if (list.contains(word.toLowerCase())){
 
             return true;
         }
@@ -78,8 +78,6 @@ public class Document {
                 newDocumentContent.append(documentWords[i]+"\n");
             }
         }
-
-        //this.documentContent = newDocumentContent.toString();
 
         if(isThereUNK){
             return newDocumentContent.toString();
