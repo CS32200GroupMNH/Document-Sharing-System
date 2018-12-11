@@ -340,8 +340,29 @@ public class SystemManager {
         return false;
     }
 
+    public boolean sendMessage(String userName, String messageType, String subject, String message){
+       try{
+           PreparedStatement statement1=dataBaseConnection.prepareStatement("INSERT INTO Messages Values ('"+ userName +"', '"+messageType+"', '"+subject+"', '"+message+"');");
+           statement1.executeUpdate();
+           return true;
+       }catch (Exception e){System.out.println(e);}
 
+       return false;
+    }
+    public ArrayList<String> getallMessages(String messageType){
 
+        ArrayList<String> allmessages = new ArrayList<String>();
 
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM Messages WHERE messageType = '" + messageType + "';");
+            ResultSet result = statement1.executeQuery();
+            while (result.next()){
+                allmessages.add(result.getString("messageType"));
+            }
+        }catch (Exception e){System.out.println(e);}
+
+        return allmessages;
+
+    }
 
 }
