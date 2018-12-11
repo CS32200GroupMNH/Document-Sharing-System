@@ -316,6 +316,10 @@ public class SystemManager {
 
     }
 
+    public static HashSet<String> getDictionary(){
+        return dictionary;
+    }
+
     public HashSet<String> getTabooWords(String documentID){
         HashSet<String> wordSet = new HashSet<String>();
 

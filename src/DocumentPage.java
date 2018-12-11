@@ -133,6 +133,7 @@ public class DocumentPage {
                     }
             }
         });
+        //Write an ActionListner to check spelling when user stops typing to check spelling and highlight the line with red.
     }
 
     public JPanel getDocumentPanel() {
