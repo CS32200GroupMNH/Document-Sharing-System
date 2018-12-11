@@ -9,19 +9,28 @@ public class Document {
     private String documentOwner;
     private String documentType;
     private boolean locked = false;
+
+    public int getCurrentDocVersion() {
+        return currentDocVersion;
+    }
+
+    private int currentDocVersion;
     private String lockedBy;
 
     private String documentContent = "";
 
 
 
-    public Document(String id, String name, String owner, String type, String lockedName, String contents) {
+
+
+
+    public Document(String id, String name, String owner, String type, String lockedName, String contents, int docVersion) {
         documentID = id;
         documentName = name;
         documentType = type;
         documentOwner = owner;
         documentContent = contents;
-
+        currentDocVersion = docVersion;
 
         if(lockedName == null){
             locked = false;
@@ -39,15 +48,16 @@ public class Document {
     //This function checks if a particular String is in the HashSet
     public boolean checkForWord(String word, HashSet<String> list)
     {
-        if (list.contains(word)){
+        if (list.contains(word.toLowerCase())){
+
             return true;
         }
 
         return false;
     }
 
-    //checks document for taboo word and replaces with UNK, returns true if a words is found in the document
-    public boolean checkDocumentForTabooWords()
+    //checks document for taboo word and replaces with UNK, returns a string with what the document should contain
+    public String checkDocumentForTabooWords(String preSaveDocument)
     {
         SystemManager s = SystemManager.getInstance();
 
@@ -56,7 +66,7 @@ public class Document {
         StringBuilder newDocumentContent = new StringBuilder("");
 
         HashSet<String> tabooWordsList = s.getTabooWords(documentID); //getTabooWords(String documentID) returns a hashset from system manager
-        String[] documentWords = getDocumentContent().split("\n");
+        String[] documentWords = preSaveDocument.split("\n");
 
         for(int i = 0; i<documentWords.length; i++ )
         {
@@ -69,27 +79,43 @@ public class Document {
             }
         }
 
-        this.documentContent = newDocumentContent.toString();
-        return isThereUNK;
+        if(isThereUNK){
+            return newDocumentContent.toString();
+        }
+        else{
+            return null;
+        }
     }
 
     public boolean updateDocument(String s){
         SystemManager s1 = SystemManager.getInstance();
         String oldDocumentText = this.documentContent;
-        this.documentContent = s;
 
+
+        this.currentDocVersion++;
         boolean savedDoc = false;
         boolean savedHistoryCommands = false;
 
         if(this.locked){
-            savedDoc = s1.saveDocument(this);
+            savedDoc = s1.saveDocument(this,s);
         }
 
         if(savedDoc){
+            if(this.currentDocVersion > 1) {
+                DocumentCommands oldDoc = new DocumentCommands(this.currentDocVersion - 1, this.documentID, s1.getUserName(), "DATE");
+                oldDoc.generateCommands(oldDocumentText, s);
+                s1.saveOldDocuments(oldDoc);
+            }
+            this.documentContent = s;
             return true;
         }
         else{
             this.documentContent = oldDocumentText;
+
+            if(this.currentDocVersion > 0){
+                this.currentDocVersion--;
+            }
+
             return false;
         }
     }

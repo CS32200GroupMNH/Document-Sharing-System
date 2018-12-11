@@ -9,11 +9,11 @@ public class OrdinaryUser {
     private String password;
 
     //constructor
-    public OrdinaryUser(String userName, String fullName, HashSet<String> technicalInterests, String password) {
+    public OrdinaryUser(String userName, String fullName, HashSet<String> technicalInterests) {
         setUserName(userName);
         setFullName(fullName);
         setTechnicalInterests(technicalInterests); //iterate through HashSet and add each string to the HashSet
-        setPassword(password);
+
     }
 
     //member functions

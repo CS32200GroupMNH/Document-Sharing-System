@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
 import java.awt.CardLayout;
+import java.io.File;
 
 public class SystemManager {
     private static SystemManager ourInstance = new SystemManager();
@@ -20,7 +21,7 @@ public class SystemManager {
         return userType;
     }
 
-    private String userType = "OU";
+    private String userType = "NA";
 
     public String getUserName() {
         return userName;
@@ -32,11 +33,14 @@ public class SystemManager {
     private ArrayList<Document> documentList;
 
     private LoginPage logInPanel = new LoginPage();
-    private OUHomePage homePanel =  new OUHomePage();
+    private OUHomePage ordinaryUserPanel =  new OUHomePage();
+    private SUHomePage superUserPanel = new SUHomePage();
     private RegistrationPage registrationPanel = new RegistrationPage();
     private GuestUserHomePage guestUserPanel = new GuestUserHomePage();
     private NewDocumentPage newDocumentPanel = new NewDocumentPage();
     private DocumentPage documentPanel = new DocumentPage();
+
+    private static HashSet<String> dictionary; //to store words from words.txt
 
     private SystemManager() {
 
@@ -48,11 +52,12 @@ public class SystemManager {
 
 
         cards.add(logInPanel.getMainPanel(),"LoginPage");
-        cards.add(homePanel.getOUPanel(),"HomePage");
+        cards.add(ordinaryUserPanel.getOUPanel(),"OUHomePage");
         cards.add(registrationPanel.getRegestrationPanel(),"RegistrationPage");
         cards.add(guestUserPanel.getGUPanel(),"GuestUserPage");
         cards.add(newDocumentPanel.getNewDocumentPanel(),"NewDocumentPage");
         cards.add(documentPanel.getDocumentPanel(),"DocumentPage");
+        cards.add(superUserPanel.getSUHPPanel(),"SUHomePage");
 
         JFrame frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
@@ -70,6 +75,7 @@ public class SystemManager {
             String username = "root";
             String password = "password";
             Class.forName(driver);
+            initializeDictionary();
 
             Connection conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected");
@@ -81,6 +87,23 @@ public class SystemManager {
 
     }
 
+    //fills the HashSet dictionary with words
+    public static void initializeDictionary(){
+        try {
+            if (dictionary == null) {
+                Scanner file = new Scanner(new File("/../Assets/words.txt"));
+                HashSet<String> tempDictionary = new HashSet<String>();
+
+                while (file.hasNext()) {
+                    String line = file.nextLine();
+                    tempDictionary.add(line.toLowerCase());
+                }
+
+                dictionary = tempDictionary;
+            }
+        } catch(Exception e) {System.out.println(e);}
+    }
+
     public void changePage(String pageName){
         CardLayout cardLayout = (CardLayout) cards.getLayout();
         cardLayout.show(cards,pageName);
@@ -89,15 +112,32 @@ public class SystemManager {
     public boolean logIn(String userName, char[] password){ ///Queries the Database and checks if the password is correct for the user in the database. Returns true if correct false otherwise
         System.out.println(userName);
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT password FROM users WHERE userName = '" + userName + "';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM users WHERE userName = '" + userName + "';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
                 String pass = result.getString("password");
+                this.userType = result.getString("userType");
                 if(Arrays.equals(result.getString("password").toCharArray(),password)) {
                     this.userName = userName;
-                    homePanel.listDocuments(getAllDocuments());
-                    this.changePage("HomePage");
+
+
+
+
+                    if(this.userType.equals("OU")){
+                        this.changePage("OUHomePage");
+                        ordinaryUserPanel.setUser(this.userName);
+                        ordinaryUserPanel.listDocuments(getAllDocuments());
+                    }
+                    else if(this.userType.equals("SU")){
+                        this.changePage("SUHomePage");
+                        superUserPanel.setUser(this.userName);
+                        superUserPanel.listDocuments(getAllDocuments());
+                    }
+
+
+
+
                     return true;
                 }
             }
@@ -117,12 +157,12 @@ public class SystemManager {
             this.changePage("GuestUserPage");
         }
         else if (this.userType.equals("OU")){
-            homePanel.listDocuments(getAllDocuments());
-            this.changePage("HomePage");
+            ordinaryUserPanel.listDocuments(getAllDocuments());
+            this.changePage("OUHomePage");
         }
         else if(this.userType.equals("SU")){
-            homePanel.listDocuments(getAllDocuments());
-            this.changePage("HomePage");
+            superUserPanel.listDocuments(getAllDocuments());
+            this.changePage("SUHomePage");
         }
 
     }
@@ -140,19 +180,19 @@ public class SystemManager {
     public boolean createNewDocument(String docName, String docType) {
         try{
             String uniqueID = UUID.randomUUID().toString();
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Documents VALUES ('"+ uniqueID +"', '"+ docName+"', '"+this.userName+"', '"+docType+"',NULL,'');");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Documents VALUES ('"+ uniqueID +"', '"+ docName+"', '"+this.userName+"', '"+docType+"',NULL,'',0);");
             statement1.executeUpdate();
-             documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,""));
+             documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,"",0));
             return true;
         }catch (Exception e){System.out.println(e);}
 
         return false;
     }
 
-    public boolean saveDocument(Document d){
+    public boolean saveDocument(Document d,String docContent){
         try{
             String uniqueID = UUID.randomUUID().toString();
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + d.getDocumentContent() + "' WHERE documentID = '" + d.getDocumentID() + "';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE Documents SET contents = '" + docContent + "', versionCount = "+ d.getCurrentDocVersion() + " WHERE documentID = '" + d.getDocumentID() + "';");
             statement1.executeUpdate();
             return true;
         }catch (Exception e){System.out.println(e);}
@@ -161,7 +201,13 @@ public class SystemManager {
         return false;
     }
 
-    public boolean saveHistoryCommands(){
+    public boolean saveOldDocuments(DocumentCommands d){
+        try{
+            String uniqueID = UUID.randomUUID().toString();
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO OldDocuments VALUES ("+d.getVersion()+",'"+d.getDocumentID()+"','"+d.getDocCommands()+"','"+d.getUpdatedBy()+"','"+d.getUpdateDate()+"')");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
         return false;
     }
 
@@ -176,7 +222,7 @@ public class SystemManager {
             String getDocumentsOwnerBy = "(SELECT * FROM Documents WHERE owner = '" + this.userName + "') AS D";
             String getPublicAndRDocs = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted'";
             String sqlQuery = "SELECT * FROM " + getDocumentsOwnerBy + " UNION " + getDocumentsSharedWith + " UNION " + getPublicAndRDocs + ";";
-            System.out.println(sqlQuery);
+            //System.out.println(sqlQuery);
             if (this.userType.equals("GU")){
                 sqlQuery = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted';";
             }
@@ -187,12 +233,28 @@ public class SystemManager {
 
             while (result.next()) {
 
-                System.out.println(result.getString("lockedBy"));
-                docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
+                //System.out.println(result.getString("lockedBy"));
+                docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents"),result.getInt("versionCount")));
             }
         }catch (Exception e){System.out.println(e + "147");}
         return docArray;
 
+    }
+
+    public ArrayList<DocumentCommands> getOldDocuments(String documentID) {
+        ArrayList<DocumentCommands> docArray = new ArrayList<DocumentCommands>(3);
+
+        try {
+
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM OldDocuments WHERE documentID = '"+documentID+"' ORDER BY versionNumber ASC;");
+
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                docArray.add(new DocumentCommands(result.getInt("versionNumber"),documentID,result.getString("updatedBY"),result.getString("updateDate"),result.getString("commands")));
+            }
+        }catch (Exception e){System.out.println(e + "215");}
+        return docArray;
     }
 
     public boolean openDocumentByID(String documentID){
@@ -201,7 +263,7 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                documentPanel.setDocumentData( new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents")));
+                documentPanel.setDocumentData( new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents"),result.getInt("versionCount")));
                 changePage("DocumentPage");
                 return true;
             }
@@ -246,7 +308,7 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                System.out.println(result.getString("lockedBy"));
+               // System.out.println(result.getString("lockedBy"));
                 docArray.add(new DocumentCommands(result.getInt("versionNumber"),documentID,result.getString("updatedBY"),"December 5 2018",result.getString("commands")));
             }
         }catch (Exception e){System.out.println(e + "147");}
@@ -254,14 +316,22 @@ public class SystemManager {
 
     }
 
+    public static HashSet<String> getDictionary(){
+        return dictionary;
+    }
+
     public HashSet<String> getTabooWords(String documentID){
         HashSet<String> wordSet = new HashSet<String>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM TabooWords WHERE location = '"+ documentID +" OR location = 'GLOBAL';");
+            String sql = "SELECT * FROM TabooWords WHERE location = '"+ documentID +"' OR location = 'GLOBAL';";
+           // System.out.println(sql);
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement(sql);
+
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
+              //  System.out.println(result.getString("word"));
                 wordSet.add(result.getString("word"));
             }
         }catch (Exception e){System.out.println(e + "222");}

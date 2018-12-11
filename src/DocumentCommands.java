@@ -1,20 +1,35 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class DocumentCommands {
     private int version;
 
     private String documentID;
     private String updatedBy;
-    private String content;
     private String updateDate;
+
+    public String getDocCommands() {
+        return docCommands;
+    }
+
+    private String docCommands;
 
 
     public DocumentCommands(int versionNum, String documentID, String updatedBy, String updateD)  {
-
+        this.version = versionNum;
+        this.documentID = documentID;
+        this.updatedBy = updatedBy;
+        this.updateDate = updateD;
     }
 
     public DocumentCommands(int versionNum, String documentID, String updatedBy,String updateD, String commands) {
-
+        this.version = versionNum;
+        this.documentID = documentID;
+        this.updatedBy = updatedBy;
+        this.updateDate = updateD;
+        this.docCommands = commands;
     }
 
     private static String compareLines(String oldLine, String newLine, int lineNumber){
@@ -32,7 +47,7 @@ public class DocumentCommands {
         }
     }
 
-    public static String generateCommands(String oldDoc, String newDoc){
+    public void generateCommands(String oldDoc, String newDoc){
         String[] oldLines = oldDoc.split("\n");
         String[] newLines = newDoc.split("\n");
 
@@ -41,19 +56,18 @@ public class DocumentCommands {
         int maxSize = Math.max(oldLines.length,newLines.length);
         for (int i = 0; i < maxSize; i++){
             if(i < oldLines.length && i < newLines.length){
-                commands.append( compareLines(oldLines[i],newLines[i],i) );
+                commands.append( compareLines(oldLines[i],newLines[i],i+1) );
             }
             else if(i < oldLines.length){
-                commands.append( compareLines(oldLines[i],null,i) );
+                commands.append( compareLines(oldLines[i],null,i+1) );
             }
             else{
-                commands.append( compareLines(null,newLines[i],i)  );
+                commands.append( compareLines(null,newLines[i],i+1)  );
             }
         }
 
 
-        return commands.toString();
-
+        this.docCommands = commands.toString();
 
     }
 
@@ -69,21 +83,43 @@ public class DocumentCommands {
         return updatedBy;
     }
 
-    public String getContent() {
-        return content;
-    }
 
     public String getUpdateDate() {
         return updateDate;
     }
 
+
+
     public static String createOldFile(String commands, String doc){
         String[] docLines = doc.split("\n");
         String[] commandLines = commands.split("\n");
         StringBuilder oldDoc = new StringBuilder("");
+        int removalCount = 1;
+        ArrayList<String> wordList = new ArrayList( Arrays.asList( docLines) );
 
+        for(String command: commandLines){
+            String[] commandWords = command.split(" ");
 
-        return "";
+            switch(commandWords[0])
+            {
+                case "Update":
+                    wordList.set(Integer.parseInt(commandWords[1]) - removalCount, commandWords[2]);
+                    break;
+                case "Delete":
+                   // System.out.println(wordList);
+                    wordList.remove(Integer.parseInt(commandWords[1]) - removalCount);
+                    removalCount++;
+                    break;
+                case "Add":
+                    wordList.add(Integer.parseInt(commandWords[1]) - removalCount ,commandWords[2]);
+                    break;
+                default:
+                    System.out.println("no match");
+            }
+        }
+
+        return String.join("\n",wordList);
+
     }
 
 
@@ -91,6 +127,8 @@ public class DocumentCommands {
         String o = "the";
         String n = "welcome\nthe\nworld\n";
 
-        System.out.println(generateCommands(o,n));
+      //  System.out.println(co);
+       // System.out.println(createOldFile(co,n));
+
     }
 }

@@ -49,21 +49,31 @@ public class DocumentPage {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean saved = currentDocument.updateDocument(textArea1.getText());
+                String newDocWithOutTWords = currentDocument.checkDocumentForTabooWords(textArea1.getText());
 
-                if(saved){
-                    JOptionPane.showMessageDialog(DocumentPanel,"Document Saved");
+                if(newDocWithOutTWords != null){
+                    textArea1.setText(newDocWithOutTWords);
+                    JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
                 }
                 else{
-                    JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
+                    boolean saved = currentDocument.updateDocument(textArea1.getText());
+
+                    if(saved){
+                        JOptionPane.showMessageDialog(DocumentPanel,"Document Saved");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
+                    }
                 }
+
             }
         });
         versionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DocumentVersionDialog dialog = new DocumentVersionDialog();
-
+                SystemManager s = SystemManager.getInstance();
+                DocumentVersionDialog dialog = new DocumentVersionDialog(currentDocument);
+                dialog.setContent(s.getOldDocuments(currentDocument.getDocumentID()));
                 dialog.setLocation(250,250);
                 dialog.setLocationRelativeTo( textArea1);
                 dialog.pack();
@@ -103,11 +113,27 @@ public class DocumentPage {
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("HELLO");
+                String docWithTabooWords = currentDocument.checkDocumentForTabooWords(textArea1.getText());
                 SystemManager s = SystemManager.getInstance();
-                s.goHome();
+                if(docWithTabooWords != null){
+                    textArea1.setText(docWithTabooWords);
+                    JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+
+
+                    int a=JOptionPane.showConfirmDialog(DocumentPanel,"Unsaved changes will be discarded. Are you sure you want to go home?");
+                    if(a==JOptionPane.YES_OPTION){
+                        if(currentDocument.isLocked()){
+                            currentDocument.changeDocumentLock(!textArea1.isEditable());
+                            textArea1.setEditable(false);
+                        }
+                        s.goHome();
+                    }
             }
         });
+        //Write an ActionListner to check spelling when user stops typing to check spelling and highlight the line with red.
     }
 
     public JPanel getDocumentPanel() {
@@ -179,7 +205,7 @@ public class DocumentPage {
         public void replace(DocumentFilter.FilterBypass fb, int offset, int length,
                             String text, AttributeSet attrs) throws BadLocationException {
 
-            System.out.println(text);
+           // System.out.println(textArea1.getLineOfOffset(offset));
             if (text.equals(" ")) {
                 super.replace(fb, offset , length, "\n", attrs);
                 return;
@@ -191,15 +217,23 @@ public class DocumentPage {
         @Override
         public void insertString(DocumentFilter.FilterBypass fb, int offset,
                                  String text, AttributeSet attr) throws BadLocationException {
-            System.out.println(text);
+           // System.out.println(textArea1.getLineOfOffset(offset));
             super.insertString(fb, offset, text, attr);
         }
 
         @Override
         public void remove(DocumentFilter.FilterBypass fb, int offset, int length)
                 throws BadLocationException {
-            System.out.println(offset);
-            super.remove(fb, offset, length);
+           // System.out.println(offset);
+           // System.out.println(textArea1.getLineEndOffset(textArea1.getLineOfOffset(offset)));
+            if(textArea1.getLineEndOffset(textArea1.getLineOfOffset(offset)) - 2 == offset){
+                super.remove(fb, offset, length+1);
+            }
+            else{
+                super.remove(fb, offset, length);
+            }
+
+
         }
 
     }

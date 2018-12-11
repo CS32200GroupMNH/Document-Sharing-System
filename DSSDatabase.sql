@@ -12,8 +12,8 @@ CREATE TABLE Messages(messageID VARCHAR(127) primary key, userName VARCHAR(127) 
 
 CREATE TABLE TabooWords(location VARCHAR(127) REFERENCES Documents(documentID), word VARCHAR(127));
 
-CREATE TABLE Documents(documentID VARCHAR(127) primary key, documentName VARCHAR(127), owner VARCHAR(127) REFERENCES users(userName), documentType VARCHAR(127), lockedBy VARCHAR(127) REFERENCES users(userName), contents TEXT);
-CREATE TABLE DocumentUpdates(versionNumber INT , documentID VARCHAR(127) REFERENCES Documents(documentID), commands TEXT, updatedBY VARCHAR(127) REFERENCES users(userName),
+CREATE TABLE Documents(documentID VARCHAR(127) primary key, documentName VARCHAR(127), owner VARCHAR(127) REFERENCES users(userName), documentType VARCHAR(127), lockedBy VARCHAR(127) REFERENCES users(userName), contents TEXT, versionCount INT);
+CREATE TABLE OldDocuments(versionNumber INT , documentID VARCHAR(127) REFERENCES Documents(documentID), commands TEXT, updatedBY VARCHAR(127) REFERENCES users(userName), updateDate VARCHAR(127),
 CONSTRAINT update_key PRIMARY KEY (versionNumber,documentID)
 );
 
@@ -31,6 +31,15 @@ INSERT INTO users VALUES ('kareem', 'password321','OU');
 
 INSERT INTO TabooWords VALUES ('GLOBAL','Crap');
 
+INSERT INTO TabooWords VALUES ('GLOBAL','UNK');
+INSERT INTO TabooWords VALUES ('GLOBAL','snap');
+INSERT INTO TabooWords VALUES ('GLOBAL','apple');
+INSERT INTO TabooWords VALUES ('GLOBAL','pear');
+INSERT INTO TabooWords VALUES ('GLOBAL','foo');
+INSERT INTO TabooWords VALUES ('GLOBAL','bar');
+INSERT INTO TabooWords VALUES ('123','pasta');
+
+
 INSERT INTO userInformation VALUES ('nabhan','Nabhan','Maswood','none');
 
-INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','admin','',null,'');
+INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','admin','',null,'',0);

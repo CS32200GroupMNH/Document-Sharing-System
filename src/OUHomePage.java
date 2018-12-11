@@ -32,7 +32,9 @@ public class OUHomePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.openDocumentFromObject((Document) docList.getSelectedValue());
+                if(docList.getSelectedValue() != null) {
+                    s.openDocumentFromObject((Document) docList.getSelectedValue());
+                }
             }
         });
     }
@@ -50,9 +52,15 @@ public class OUHomePage {
 
     }
 
+    public void setUser(String userName){
+        UserNameLabel.setText("Username: " + userName);
+    }
+
     public void setImage(URL image){
         ImageIcon  icon = new ImageIcon(image);
+
         ImageLabel.setIcon(icon);
+
     }
 
     public static void main(String[] args) {
@@ -62,12 +70,14 @@ public class OUHomePage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-       // final DefaultListModel fruitsName = new DefaultListModel();
 
-       // fruitsName.addElement("Apple");
-       // fruitsName.addElement("Grapes");
-       // fruitsName.addElement("Mango");
-      //  fruitsName.addElement("Peer");
+        try {
+            URL myURL = new URL("https://news.nationalgeographic.com/content/dam/news/2018/05/17/you-can-train-your-cat/02-cat-training-NationalGeographic_1484324.ngsversion.1526587209178.adapt.1900.1.jpg");
+            o.setImage(myURL);
+        }
+        catch (Exception e){System.out.println(e);}
+
+
 
     }
 }
