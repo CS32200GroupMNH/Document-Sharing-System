@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
 import java.awt.CardLayout;
+import java.io.File;
 
 public class SystemManager {
     private static SystemManager ourInstance = new SystemManager();
@@ -38,6 +39,8 @@ public class SystemManager {
     private GuestUserHomePage guestUserPanel = new GuestUserHomePage();
     private NewDocumentPage newDocumentPanel = new NewDocumentPage();
     private DocumentPage documentPanel = new DocumentPage();
+
+    private static HashSet<String> dictionary; //to store words from words.txt
 
     private SystemManager() {
 
@@ -72,6 +75,7 @@ public class SystemManager {
             String username = "root";
             String password = "password";
             Class.forName(driver);
+            initializeDictionary();
 
             Connection conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected");
@@ -81,6 +85,23 @@ public class SystemManager {
 
         return null;
 
+    }
+
+    //fills the HashSet dictionary with words
+    public static void initializeDictionary(){
+        try {
+            if (dictionary == null) {
+                Scanner file = new Scanner(new File("/../Assets/words.txt"));
+                HashSet<String> tempDictionary = new HashSet<String>();
+
+                while (file.hasNext()) {
+                    String line = file.nextLine();
+                    tempDictionary.add(line.toLowerCase());
+                }
+
+                dictionary = tempDictionary;
+            }
+        } catch(Exception e) {System.out.println(e);}
     }
 
     public void changePage(String pageName){

@@ -56,7 +56,7 @@ public class Document {
         return false;
     }
 
-    //checks document for taboo word and replaces with UNK, returns true if a words is found in the document
+    //checks document for taboo word and replaces with UNK, returns a string with what the document should contain
     public String checkDocumentForTabooWords(String preSaveDocument)
     {
         SystemManager s = SystemManager.getInstance();
