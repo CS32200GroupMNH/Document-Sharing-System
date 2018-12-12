@@ -13,6 +13,6 @@ When you have MYSQL installed you set up the database by running the commands in
 
 The project uses JAVA SDK 9.0 and requires the MYSQL connector library "mysql-connector-java-8.0.13.jar".
 
-To run the system you run the Java Class file "DocumentSharingSystem" which contains the main method to create the database. 
+To run the system you run the Java Class file "DocumentSharingSystem" which contains the main method start the system 
 
 The SystemManager contains all the methods that query the database since there is a single database connection in the program. 
