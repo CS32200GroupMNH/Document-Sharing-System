@@ -600,18 +600,18 @@ public class SystemManager {
     }
 
     public ArrayList<Document> searchDocument(String docName, String docOwner) {
-        ArrayList<Document> userArray = new ArrayList<Document>();
+        ArrayList<Document> docArray = new ArrayList<Document>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT documentName, owner FROM Documents WHERE documentName LIKE '" + docName +"%' AND owner LIKE '" + docOwner + "%';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT documentName, owner FROM Documents WHERE documentName LIKE '" + docName + "%' AND owner LIKE '" + docOwner + "%';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                userArray.add(new User(result.getString("documentName"), result.getString("owner")));
+                docArray.add(new Document(result.getString("documentName"), result.getString("owner")));
             }
 
         } catch (Exception e) {System.out.println(e);}
-        return userArray;
+        return docArray;
     }
 
     */
