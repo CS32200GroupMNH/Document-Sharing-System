@@ -73,7 +73,7 @@ public class SystemManager {
             String driver = "com.mysql.cj.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/DSSDatabase";
             String username = "root";
-            String password = "password";
+            String password = "Boost346";
             Class.forName(driver);
             initializeDictionary();
 
@@ -435,4 +435,36 @@ public class SystemManager {
 
     }
 
+}
+
+public ArrayList<User> searchUsers(String name, String interests) {
+	ArrayList<User> userArray = new ArrayList<User>();
+
+	try {
+		String getUsers = “SELECT userName, userInterests FROM userInformation WHERE userName LIKE ” + name +“% AND userInterests LIKE” + interests +“%”;
+		PreparedStatement statement1 = dataBaseConnection.prepareStatement(getUsers);
+        	ResultSet result = statement1.executeQuery(); 
+		
+		while (result.next()) {
+			userArray.add(new User(result.getString(“userName”), result.getString(“userInterests”)));
+		}
+
+	} catch (Exception e) {System.out.println(e);}
+	return userArray;
+}
+
+public ArrayList<Document> searchDocument(String docName, String docOwner) {
+	ArrayList<Document> userArray = new ArrayList<Document>();
+
+	try {
+		String getDocuments = “SELECT documentName, owner FROM Documents WHERE documentName LIKE ” + docName +“% AND owner LIKE” + docOwner +“%”;
+		PreparedStatement statement1 = dataBaseConnection.prepareStatement(getUsers);
+        	ResultSet result = statement1.executeQuery(); 
+		
+		while (result.next()) {
+			userArray.add(new User(result.getString(“documentName”), result.getString(“owner”)));
+		}
+
+	} catch (Exception e) {System.out.println(e);}
+	return userArray;
 }
