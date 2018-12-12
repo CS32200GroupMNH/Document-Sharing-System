@@ -65,12 +65,11 @@ public class Document {
 
         StringBuilder newDocumentContent = new StringBuilder("");
 
-        HashSet<String> tabooWordsList = s.getTabooWords(documentID); //getTabooWords(String documentID) returns a hashset from system manager
         String[] documentWords = preSaveDocument.split("\n");
 
         for(int i = 0; i<documentWords.length; i++ )
         {
-            if (checkForWord(documentWords[i], tabooWordsList)){
+            if (checkForWord(documentWords[i], s.getTabooWords(documentID))){
                 newDocumentContent.append("UNK"+"\n");
                 isThereUNK = true;
             }
@@ -85,6 +84,24 @@ public class Document {
         else{
             return null;
         }
+    }
+    //if the last word is spelled incorrectly returns false
+    public boolean spellChecker(){
+        SystemManager s = SystemManager.getInstance();
+
+        String lastWord = documentContent.substring(documentContent.lastIndexOf(" ")+1);
+        if (checkForWord(lastWord, s.getDictionary())){
+            return true;
+        }
+        return false;
+    }
+
+    public int getStartIndex(){
+        return documentContent.lastIndexOf("\n");
+    }
+
+    public int getEndIndex(){
+        return documentContent.length() -1;
     }
 
     public boolean updateDocument(String s){
