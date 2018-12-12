@@ -18,6 +18,7 @@ public class SUHomePage {
     private JButton openDocumentButton;
     private JLabel ImageLabel;
     private JButton manageUsersButton;
+    private JButton logOutButton;
 
     public SUHomePage() {
         newDocumentButton1.addActionListener(new ActionListener() {
@@ -58,6 +59,13 @@ public class SUHomePage {
                 dialog.pack();
                 dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
                 dialog.setVisible(true);
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.logOut();
             }
         });
     }

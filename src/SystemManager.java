@@ -164,6 +164,10 @@ public class SystemManager {
         this.changePage("GuestUserPage");
     }
 
+    public void logOut(){
+        this.changePage("LoginPage");
+    }
+
     public void goHome(){
         if(this.userType.equals("GU")){
             this.changePage("GuestUserPage");
@@ -233,10 +237,10 @@ public class SystemManager {
             String getDocumentsSharedWith = "(SELECT * FROM Documents NATURAL JOIN " + getSharedDocIds + ")";
             String getDocumentsOwnerBy = "(SELECT * FROM Documents WHERE owner = '" + this.userName + "') AS D";
             String getPublicAndRDocs = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted'";
-            String sqlQuery = "SELECT * FROM " + getDocumentsOwnerBy + " UNION " + getDocumentsSharedWith + " UNION " + getPublicAndRDocs + ";";
+            String sqlQuery = "SELECT * FROM " + getDocumentsOwnerBy + " UNION " + getDocumentsSharedWith + " UNION " + getPublicAndRDocs + " ORDER BY versionCount DESC;";
             //System.out.println(sqlQuery);
             if (this.userType.equals("GU")){
-                sqlQuery = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted';";
+                sqlQuery = "SELECT * FROM documents WHERE documentType = 'Public' OR documentType = 'Restricted' ORDER BY versionCount DESC;;";
             }
 
             PreparedStatement statement1 = dataBaseConnection.prepareStatement(sqlQuery);

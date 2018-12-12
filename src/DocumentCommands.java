@@ -97,14 +97,20 @@ public class DocumentCommands {
         StringBuilder oldDoc = new StringBuilder("");
         int removalCount = 1;
         ArrayList<String> wordList = new ArrayList( Arrays.asList( docLines) );
-
+        String newUpdate;
         for(String command: commandLines){
             String[] commandWords = command.split(" ");
 
             switch(commandWords[0])
             {
                 case "Update":
-                    wordList.set(Integer.parseInt(commandWords[1]) - removalCount, commandWords[2]);
+                    if(commandWords.length == 2){
+                        newUpdate = "";
+                    }
+                    else{
+                        newUpdate = commandWords[2];
+                    }
+                    wordList.set(Integer.parseInt(commandWords[1]) - removalCount, newUpdate);
                     break;
                 case "Delete":
                    // System.out.println(wordList);
@@ -112,10 +118,11 @@ public class DocumentCommands {
                     removalCount++;
                     break;
                 case "Add":
+
                     wordList.add(Integer.parseInt(commandWords[1]) - removalCount ,commandWords[2]);
                     break;
                 default:
-                    System.out.println("no match");
+                    System.out.println("no match" + commandWords[0]);
             }
         }
 

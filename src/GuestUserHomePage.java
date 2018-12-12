@@ -12,6 +12,7 @@ public class GuestUserHomePage {
     private JList documentLIst;
     private JButton openDocumentButton;
     private JButton suggestTabooWordsButton;
+    private JButton logOutButton;
 
     public GuestUserHomePage() {
         applyToBecomeOrdinaryButton.addActionListener(new ActionListener() {
@@ -30,6 +31,13 @@ public class GuestUserHomePage {
                         s.openDocumentFromObject((Document) documentLIst.getSelectedValue());
                     }
                 }
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.logOut();
             }
         });
     }

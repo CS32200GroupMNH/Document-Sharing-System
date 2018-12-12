@@ -166,6 +166,7 @@ public class DocumentPage {
         textArea1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                /*
                 if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER){
                     if (currentDocument.spellChecker()) {
                         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.RED);
@@ -174,7 +175,7 @@ public class DocumentPage {
                             textArea1.getHighlighter().addHighlight(currentDocument.getStartIndex(), currentDocument.getEndIndex(), painter);
                         }catch(Exception error){System.out.println(error);}
                     }
-                    }
+                    }*/
                 }
             }
         );
@@ -186,8 +187,10 @@ public class DocumentPage {
 
     public void setDocumentData(Document d){
         SystemManager s = SystemManager.getInstance();
-        s.setTitle(d.getDocumentName());
+        s.setTitle(d.getDocumentName() + " (" + d.getDocumentType() + ")");
         currentDocument = d;
+
+
 
 
          if(this.currentDocument.getDocumentOwner().equals(s.getUserName()) || s.getUserType().equals("SU")){
@@ -211,6 +214,10 @@ public class DocumentPage {
         }
         else{
             textArea1.setEditable(false);
+        }
+
+        if(!this.currentDocument.getDocumentOwner().equals(s.getUserName())){
+            sharingButton.setVisible(false);
         }
 
         this.setLockLabelText(d.getLockedBy());

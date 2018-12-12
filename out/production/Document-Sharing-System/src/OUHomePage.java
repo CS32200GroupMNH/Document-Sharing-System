@@ -1,3 +1,5 @@
+
+
 import javax.print.Doc;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +20,7 @@ public class OUHomePage {
     private JList docList;
     private JButton openDocumentButton;
     private JLabel ImageLabel;
+    private JButton logOutButton;
 
 
     public OUHomePage() {
@@ -37,6 +40,13 @@ public class OUHomePage {
                         s.openDocumentFromObject((Document) docList.getSelectedValue());
                     }
                 }
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.logOut();
             }
         });
     }

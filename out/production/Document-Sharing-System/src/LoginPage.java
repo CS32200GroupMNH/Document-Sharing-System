@@ -26,6 +26,9 @@ public class LoginPage {
                 if(s.logIn(userNameField.getText(),passwordField1.getPassword())){///User Found and password is correct
 
                     //s.changePage("HomePage");
+                    incorrectPasswordLabel.setText("");
+                    passwordField1.setText("");
+                    userNameField.setText("");
 
 
                 }
