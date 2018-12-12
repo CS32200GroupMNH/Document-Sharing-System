@@ -588,7 +588,7 @@ public class SystemManager {
         ArrayList<User> userArray = new ArrayList<User>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT userName, userInterests FROM userInformation WHERE userName LIKE '" + name + "%' AND userInterests LIKE '" + interests + "%';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM userInformation WHERE userName LIKE '" + name + "%' AND userInterests LIKE '" + interests + "%';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
@@ -603,11 +603,11 @@ public class SystemManager {
         ArrayList<Document> docArray = new ArrayList<Document>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT documentName, owner FROM Documents WHERE documentName LIKE '" + docName + "%' AND owner LIKE '" + docOwner + "%';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM Documents WHERE documentName LIKE '" + docName + "%' AND owner LIKE '" + docOwner + "%';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                docArray.add(new Document(result.getString("documentName"), result.getString("owner")));
+                docArray.add(new Document(result.getString("documentID"), result.getString("documentName"), result.getString("documentType"), result.getString("owner"), result.getString("documentContent"), result.getString("currentDocVersion")));
             }
 
         } catch (Exception e) {System.out.println(e);}
