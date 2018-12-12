@@ -95,7 +95,8 @@ public class Document {
     public boolean spellChecker(){
         SystemManager s = SystemManager.getInstance();
 
-        String lastWord = documentContent.substring(documentContent.lastIndexOf(" ")+1);
+        String[] parts = documentContent.split("\n");
+        String lastWord = parts[parts.length - 1];
         if (checkForWord(lastWord, s.getDictionary())){
             return true;
         }

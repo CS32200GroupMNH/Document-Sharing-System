@@ -166,7 +166,7 @@ public class DocumentPage {
         textArea1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                /*
+                
                 if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER){
                     if (currentDocument.spellChecker()) {
                         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.RED);
@@ -175,7 +175,7 @@ public class DocumentPage {
                             textArea1.getHighlighter().addHighlight(currentDocument.getStartIndex(), currentDocument.getEndIndex(), painter);
                         }catch(Exception error){System.out.println(error);}
                     }
-                    }*/
+                    }
                 }
             }
         );
