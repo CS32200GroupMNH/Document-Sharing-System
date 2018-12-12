@@ -73,7 +73,7 @@ public class SystemManager {
             String driver = "com.mysql.cj.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/DSSDatabase";
             String username = "root";
-            String password = "password";
+            String password = "Boost346";
             Class.forName(driver);
             initializeDictionary();
 
