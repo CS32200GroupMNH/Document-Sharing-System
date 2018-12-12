@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="OUHomePage">
+  <grid id="27dc6" binding="OUPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="517" height="614"/>
+    </constraints>
+    <properties>
+      <preferredSize width="500" height="550"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="852c5" binding="SUHPPanel" layout-manager="GridLayoutManager" row-count="14" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="10" bottom="10" right="10"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <preferredSize width="500" height="510"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <vspacer id="8cf0a">
+            <constraints>
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="25"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <component id="f60d6" class="javax.swing.JLabel" binding="ImageLabel">
+            <constraints>
+              <grid row="4" column="1" row-span="2" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="100" height="100"/>
+                <preferred-size width="100" height="100"/>
+                <maximum-size width="100" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <icon value="UA.png"/>
+              <inheritsPopupMenu value="false"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="fb213" class="javax.swing.JLabel" binding="UserNameLabel">
+            <constraints>
+              <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="User Name: name2"/>
+            </properties>
+          </component>
+          <hspacer id="6c921">
+            <constraints>
+              <grid row="4" column="6" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="b4c72" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="User Type: Oridinary User"/>
+            </properties>
+          </component>
+          <vspacer id="32576">
+            <constraints>
+              <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="20"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <component id="959b8" class="javax.swing.JButton" binding="messagesButton1" default-binding="true">
+            <constraints>
+              <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Messages"/>
+            </properties>
+          </component>
+          <hspacer id="11dc5">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="a1a2c">
+            <constraints>
+              <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="3ba61" class="javax.swing.JButton" binding="newDocumentButton1" default-binding="true">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="New Document"/>
+            </properties>
+          </component>
+          <component id="c71a6" class="javax.swing.JButton" binding="searchDocumentsButton1" default-binding="true">
+            <constraints>
+              <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Search Documents"/>
+            </properties>
+          </component>
+          <component id="dacb6" class="javax.swing.JButton" binding="searchUsersButton1" default-binding="true">
+            <constraints>
+              <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Search Users"/>
+            </properties>
+          </component>
+          <component id="d7b1c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="28"/>
+              <text value="Home"/>
+            </properties>
+          </component>
+          <component id="95ce" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="9" column="0" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Top Documents"/>
+            </properties>
+          </component>
+          <component id="7f3c1" class="javax.swing.JButton" binding="openDocumentButton" default-binding="true">
+            <constraints>
+              <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Open Document"/>
+            </properties>
+          </component>
+          <vspacer id="d74a9">
+            <constraints>
+              <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="10"/>
+                <preferred-size width="-1" height="10"/>
+                <maximum-size width="-1" height="10"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <vspacer id="447ff">
+            <constraints>
+              <grid row="13" column="6" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="5dbd9" class="javax.swing.JSeparator">
+            <constraints>
+              <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="f991f" class="javax.swing.JSeparator">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <scrollpane id="ec461">
+            <constraints>
+              <grid row="11" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a3064" class="javax.swing.JList" binding="docList">
+                <constraints/>
+                <properties>
+                  <font style="0"/>
+                  <inheritsPopupMenu value="false"/>
+                  <model>
+                    <item value="Document1"/>
+                    <item value="Document2"/>
+                    <item value="Document3"/>
+                    <item value="Document4"/>
+                    <item value="Document5"/>
+                    <item value="Document6"/>
+                    <item value="Document7"/>
+                    <item value="Document8"/>
+                  </model>
+                  <selectionMode value="0"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
