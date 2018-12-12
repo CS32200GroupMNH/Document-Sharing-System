@@ -599,7 +599,7 @@ public class SystemManager {
         return userArray;
     }
 
-    public ArrayList<Document> searchDocument(String docName, String docOwner) {
+   public ArrayList<Document> searchDocument(String docName, String docOwner) {
         ArrayList<Document> docArray = new ArrayList<Document>();
 
         try {
@@ -607,7 +607,7 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-                docArray.add(new Document(result.getString("documentID"), result.getString("documentName"), result.getString("documentType"), result.getString("owner"), result.getString("documentContent"), result.getString("currentDocVersion")));
+                docArray.add(new Document(result.getString("documentID"), result.getString("documentName"), result.getString("documentType"), result.getString("owner"), result.getString("documentContent"), result.getInt("currentDocVersion")));
             }
 
         } catch (Exception e) {System.out.println(e);}
