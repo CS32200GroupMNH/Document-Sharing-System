@@ -5,7 +5,7 @@ Storage: Database
 Operating System: Windows
 IDE: IntelliJ
 
-To Run the project you need to have MYSQL server and set up the database with user "root" and password "Password"
+To Run the project you need to have MYSQL server and set up the database with user "root" and password "password"
 If you don't have the user like that in the SystemManager you can go to the getConnection method and change the login
 for the database. 
 
