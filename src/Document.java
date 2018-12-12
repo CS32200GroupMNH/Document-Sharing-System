@@ -18,10 +18,16 @@ public class Document {
     private String lockedBy;
 
     private String documentContent = "";
+    private boolean flaggedDocument = false;
 
 
+    public void setDocFlag(boolean val){
+        flaggedDocument = val;
+    }
 
-
+    public boolean isFlagged(){
+        return flaggedDocument;
+    }
 
 
     public Document(String id, String name, String owner, String type, String lockedName, String contents, int docVersion) {
@@ -120,6 +126,16 @@ public class Document {
 
             return false;
         }
+    }
+
+    public void flagThisDocument(){
+        SystemManager s = SystemManager.getInstance();
+        s.flagDocument(this.documentID);
+    }
+
+    public void unFlagThisDocument(){
+        SystemManager s = SystemManager.getInstance();
+        s.unFlagDocument(this.documentID);
     }
 
     private String generateHistoryCommands(String oldDoc,String newDoc){

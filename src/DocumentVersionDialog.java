@@ -85,17 +85,25 @@ public class DocumentVersionDialog extends JDialog {
         versionTable.setModel(new DefaultTableModel(data, columns));
     }
 
-    private void getDocumentContent(int versionNum){
+    private String getDocumentContent(int versionNum){
         int amountOfVersions = docCommandList.size();
-
+        String currentDocContents = currentDocument.getDocumentContent();
         if(amountOfVersions == versionNum){
-            return;
+            return DocumentCommands.createOldFile(docCommandList.get(versionNum - 1).getDocCommands(),currentDocContents);
+        }
+        else{
+
+            for(int i = amountOfVersions; i >= versionNum; i-- ){
+                currentDocContents =  DocumentCommands.createOldFile(docCommandList.get(i - 1).getDocCommands(),currentDocContents);
+            }
+
+            return  currentDocContents;
         }
     }
 
     private void openOldDocFromVersion(int versionNum){
-
-        OldDocumentDialog dialog = new OldDocumentDialog(versionNum,docCommandList.get(versionNum - 1).getDocCommands());
+        String oldDocumentContents = "";
+        OldDocumentDialog dialog = new OldDocumentDialog(versionNum,getDocumentContent(versionNum));
         dialog.pack();
         dialog.setLocationRelativeTo( contentPane);
 

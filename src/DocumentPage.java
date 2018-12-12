@@ -22,11 +22,14 @@ public class DocumentPage {
     private JButton homeButton;
 
     public DocumentPage() {
+        ((AbstractDocument) textArea1.getDocument()).setDocumentFilter(new DSSMainFilter());
+        textArea1.setTransferHandler(null);
+        textArea1.setTabSize(0);
         lockButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ((AbstractDocument) textArea1.getDocument()).setDocumentFilter(new DSSMainFilter());
+
 
                 if(currentDocument.changeDocumentLock(!textArea1.isEditable())){
 
@@ -52,14 +55,44 @@ public class DocumentPage {
                 String newDocWithOutTWords = currentDocument.checkDocumentForTabooWords(textArea1.getText());
 
                 if(newDocWithOutTWords != null){
+
+                    if(currentDocument.isFlagged()){
+                        JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Fix it now.","Alert",JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
                     textArea1.setText(newDocWithOutTWords);
-                    JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
+                    int a = JOptionPane.showOptionDialog(DocumentPanel,
+                            "Taboo word found. Replaced with 'UNK'",
+                            "Word Alerts",
+                            JOptionPane.OK_CANCEL_OPTION,
+                            JOptionPane.WARNING_MESSAGE,
+                            null,
+                            new String[]{"Fix Now", "Save and fix next time you log on"}, // this is the array
+                            "default");
+
+
+                     if (a== JOptionPane.NO_OPTION){
+                         boolean saved = currentDocument.updateDocument(textArea1.getText());
+                         if(saved){
+                             JOptionPane.showMessageDialog(DocumentPanel,"Document Saved. Next Login will ");
+                             homeButton.setVisible(true);
+                             currentDocument.flagThisDocument();
+                         }
+                         else{
+                             JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
+                         }
+                    }
+
                 }
                 else{
                     boolean saved = currentDocument.updateDocument(textArea1.getText());
 
                     if(saved){
                         JOptionPane.showMessageDialog(DocumentPanel,"Document Saved");
+                        homeButton.setVisible(true);
+                        currentDocument.unFlagThisDocument();
+
                     }
                     else{
                         JOptionPane.showMessageDialog(DocumentPanel,"Document is not saved.","Alert",JOptionPane.WARNING_MESSAGE);
@@ -113,15 +146,14 @@ public class DocumentPage {
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String docWithTabooWords = currentDocument.checkDocumentForTabooWords(textArea1.getText());
                 SystemManager s = SystemManager.getInstance();
-                if(docWithTabooWords != null){
-                    textArea1.setText(docWithTabooWords);
-                    JOptionPane.showMessageDialog(DocumentPanel,"There are taboo words in the document. Please Fix it.","Alert",JOptionPane.WARNING_MESSAGE);
-                    return;
+
+                if(currentDocument.isFlagged()){
+                    currentDocument.setDocFlag(false);
+                  if(s.openFlaggedDocument()) {
+                      return;
+                  }
                 }
-
-
 
                     int a=JOptionPane.showConfirmDialog(DocumentPanel,"Unsaved changes will be discarded. Are you sure you want to go home?");
                     if(a==JOptionPane.YES_OPTION){
@@ -141,6 +173,7 @@ public class DocumentPage {
 
     public void setDocumentData(Document d){
         SystemManager s = SystemManager.getInstance();
+        s.setTitle(d.getDocumentName());
         currentDocument = d;
 
 
@@ -159,9 +192,26 @@ public class DocumentPage {
              }
         }
 
+        if(d.isLocked() && d.getLockedBy().equals(s.getUserName())) {
+            textArea1.setEditable(true);
+            lockButton.setText("Unlock");
+        }
+        else{
+            textArea1.setEditable(false);
+        }
 
         this.setLockLabelText(d.getLockedBy());
         textArea1.setText(currentDocument.getDocumentContent());
+
+
+
+        if(d.isFlagged()){
+
+            homeButton.setVisible(false);
+            JOptionPane.showMessageDialog(DocumentPanel,"This document contains Taboo words replaced with 'UNK'.\nPlease Fix","Alert",JOptionPane.WARNING_MESSAGE);
+        }
+
+
     }
 
     private void setReadOnly(){

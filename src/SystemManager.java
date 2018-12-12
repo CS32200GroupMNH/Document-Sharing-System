@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import javax.swing.*;
 import java.sql.Driver;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ public class SystemManager {
     public static SystemManager getInstance() {
         return ourInstance;
     }
+    private JFrame frame;
     private JPanel cards;
 
     public String getUserType() {
@@ -56,7 +58,7 @@ public class SystemManager {
         cards.add(documentPanel.getDocumentPanel(),"DocumentPage");
         cards.add(superUserPanel.getSUHPPanel(),"SUHomePage");
 
-        JFrame frame = new JFrame("LoginPage");
+         frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -64,6 +66,11 @@ public class SystemManager {
 
 
     }
+
+    public void setTitle(String s){
+        frame.setTitle(s);
+    }
+
 
     private static Connection getConnection() throws Exception{ //Creates the connection with the sql server and returns it
         try{
@@ -85,6 +92,7 @@ public class SystemManager {
 
     public void changePage(String pageName){
         CardLayout cardLayout = (CardLayout) cards.getLayout();
+        setTitle(pageName);
         cardLayout.show(cards,pageName);
     }
 
@@ -104,14 +112,18 @@ public class SystemManager {
 
 
                     if(this.userType.equals("OU")){
-                        this.changePage("OUHomePage");
-                        ordinaryUserPanel.setUser(this.userName);
-                        ordinaryUserPanel.listDocuments(getAllDocuments());
+                        if(!this.openFlaggedDocument()){
+                            this.changePage("OUHomePage");
+                            ordinaryUserPanel.setUser(this.userName);
+                            ordinaryUserPanel.listDocuments(getAllDocuments());
+                        }
                     }
                     else if(this.userType.equals("SU")){
-                        this.changePage("SUHomePage");
-                        superUserPanel.setUser(this.userName);
-                        superUserPanel.listDocuments(getAllDocuments());
+                        if(!this.openFlaggedDocument()){
+                            this.changePage("SUHomePage");
+                            superUserPanel.setUser(this.userName);
+                            superUserPanel.listDocuments(getAllDocuments());
+                        }
                     }
 
 
@@ -253,8 +265,9 @@ public class SystemManager {
     }
 
     public void openDocumentFromObject(Document d){
-        documentPanel.setDocumentData(d);
+
         changePage("DocumentPage");
+        documentPanel.setDocumentData(d);
     }
 
     public boolean lockDocument(String documentID){
@@ -383,6 +396,42 @@ public class SystemManager {
         }catch (Exception e){System.out.println(e);}
 
         return false;
+    }
+
+    public boolean flagDocument(String documentID){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO FlaggedDocuments VALUES ('" + documentID + "','" + this.userName + "')");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+    }
+
+    public boolean unFlagDocument(String documentID){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("DELETE FROM FlaggedDocuments WHERE documentID = '" + documentID + "'");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+
+        return false;
+    }
+
+    public boolean openFlaggedDocument(){
+        try {
+            String sql = "SELECT * FROM Documents NATURAL JOIN FlaggedDocuments WHERE userName = '" + this.userName + "';";
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement(sql);
+            System.out.println(sql);
+            ResultSet result = statement1.executeQuery();
+            while (result.next()) {
+                Document d = new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents"),result.getInt("versionCount"));
+                d.setDocFlag(true);
+                this.openDocumentFromObject(d);
+                return true;
+            }
+        }catch (Exception e){System.out.println(e + "147");}
+        return false;
+
     }
 
 

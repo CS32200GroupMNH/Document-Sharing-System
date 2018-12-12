@@ -21,8 +21,12 @@ CREATE TABLE SharedDocuments(sharedWith VARCHAR(127) REFERENCES users(userName),
  CONSTRAINT sh_doc_key PRIMARY KEY (sharedWith, documentID)
  );
 
+CREATE TABLE FlaggedDocuments(documentID VARCHAR(127) REFERENCES Documents(documentID), userName VARCHAR(127) REFERENCES users(userName),
+CONSTRAINT flag_doc_key PRIMARY KEY (documentID,userName)
+);
 
 
+INSERT INTO users VALUES ('sys','sys','SU');
 INSERT INTO users VALUES ('admin','password','SU');
 INSERT INTO users VALUES ('nabhan', 'password123','OU');
 INSERT INTO users VALUES ('naeem', 'password456','OU');
@@ -42,4 +46,4 @@ INSERT INTO TabooWords VALUES ('123','pasta');
 
 INSERT INTO userInformation VALUES ('nabhan','Nabhan','Maswood','none');
 
-INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','admin','',null,'',0);
+INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','sys','',null,'',0);

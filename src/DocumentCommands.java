@@ -92,6 +92,7 @@ public class DocumentCommands {
 
     public static String createOldFile(String commands, String doc){
         String[] docLines = doc.split("\n");
+
         String[] commandLines = commands.split("\n");
         StringBuilder oldDoc = new StringBuilder("");
         int removalCount = 1;
@@ -125,8 +126,11 @@ public class DocumentCommands {
 
     public static void main(String[] args) {
         String o = "the";
-        String n = "welcome\nthe\nworld\n";
+        String doc = "welcome          the\nworld\n";
 
+       doc =  doc.replaceAll(" ","\n");
+        String[] docLines = doc.split("\n");
+        System.out.println(doc);
       //  System.out.println(co);
        // System.out.println(createOldFile(co,n));
 

@@ -17,6 +17,7 @@ public class LoginPage {
     }
 
     public LoginPage() {
+
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
