@@ -578,37 +578,32 @@ public class SystemManager {
 
 }
 
-/*
-public ArrayList<User> searchUsers(String name, String interests) {
-	ArrayList<User> userArray = new ArrayList<User>();
+    public ArrayList<User> searchUsers(String name, String interests) {
+        ArrayList<User> userArray = new ArrayList<User>();
 
-	try {
-		String getUsers = "SELECT userName, userInterests FROM userInformation WHERE userName LIKE ” + name +\"% AND userInterests LIKE” + interests +\"%”;
-		PreparedStatement statement1 = dataBaseConnection.prepareStatement(getUsers);
-        	ResultSet result = statement1.executeQuery(); 
-		
-		while (result.next()) {
-			userArray.add(new User(result.getString("userName), result.getString("userInterests"));
-		}
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT userName, userInterests FROM userInformation WHERE userName LIKE '" + name + "%' AND userInterests LIKE '" + interests + "%';");
+            ResultSet result = statement1.executeQuery();
 
-	} catch (Exception e) {System.out.println(e);}
-	return userArray;
-}
+            while (result.next()) {
+                userArray.add(new User(result.getString("userName"), result.getString("userInterests")));
+            }
 
-public ArrayList<Document> searchDocument(String docName, String docOwner) {
-	ArrayList<Document> userArray = new ArrayList<Document>();
+        } catch (Exception e) {System.out.println(e);}
+        return userArray;
+    }
 
-	try {
-		String getDocuments = “SELECT documentName, owner FROM Documents WHERE documentName LIKE ” + docName +“% AND owner LIKE” + docOwner +“%”;
-		PreparedStatement statement1 = dataBaseConnection.prepareStatement(getUsers);
-        	ResultSet result = statement1.executeQuery(); 
-		
-		while (result.next()) {
-			userArray.add(new User(result.getString(“documentName”), result.getString(“owner”)));
-		}
+    public ArrayList<Document> searchDocument(String docName, String docOwner) {
+        ArrayList<Document> userArray = new ArrayList<Document>();
 
-	} catch (Exception e) {System.out.println(e);}
-	return userArray;
-}
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT documentName, owner FROM Documents WHERE documentName LIKE '" + docName +"%' AND owner LIKE '" + docOwner + "%';");
+            ResultSet result = statement1.executeQuery();
 
-*/
+            while (result.next()) {
+                userArray.add(new User(result.getString("documentName"), result.getString("owner")));
+            }
+
+        } catch (Exception e) {System.out.println(e);}
+        return userArray;
+    }
