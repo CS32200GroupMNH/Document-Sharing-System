@@ -40,6 +40,18 @@ public class GuestUserHomePage {
                 s.logOut();
             }
         });
+        suggestTabooWordsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String name=JOptionPane.showInputDialog(GUPanel,"Suggest a word");
+
+                if(name != null){
+                    SystemManager s = SystemManager.getInstance();
+                    s.sendMessage("admin","TWSuggestion","GLOBAL",name);
+                }
+            }
+        });
     }
 
     public JPanel getGUPanel() {

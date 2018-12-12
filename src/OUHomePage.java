@@ -21,6 +21,7 @@ public class OUHomePage {
     private JButton openDocumentButton;
     private JLabel ImageLabel;
     private JButton logOutButton;
+    private JButton tabooWordsButton;
 
 
     public OUHomePage() {
@@ -65,6 +66,31 @@ public class OUHomePage {
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
                 s.logOut();
+            }
+        });
+        searchDocumentsButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("SDPage");
+            }
+        });
+        searchUsersButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("SUPage");
+            }
+        });
+        tabooWordsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name=JOptionPane.showInputDialog(OUPanel,"Suggest a word");
+
+                if(name != null){
+                    SystemManager s = SystemManager.getInstance();
+                    s.sendMessage("admin","TWSuggestion","GLOBAL",name);
+                }
             }
         });
     }

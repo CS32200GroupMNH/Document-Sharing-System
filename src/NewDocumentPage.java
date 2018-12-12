@@ -15,6 +15,8 @@ public class NewDocumentPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
+                statusLabel.setText("");
+                docNameField.setText("");
                 s.goHome();
             }
         });
@@ -25,6 +27,8 @@ public class NewDocumentPage {
                 //(String)cb.getSelectedItem()
                 if(s.createNewDocument(docNameField.getText(),(String)comboBox1.getSelectedItem())){
                     s.changePage("DocumentPage");
+                    statusLabel.setText("");
+                    docNameField.setText("");
                 }
 
             }

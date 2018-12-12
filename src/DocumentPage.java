@@ -134,7 +134,7 @@ public class DocumentPage {
         complaintsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DocumentComplaintsDialog dialog = new DocumentComplaintsDialog();
+                DocumentComplaintsDialog dialog = new DocumentComplaintsDialog(currentDocument);
                 dialog.setLocationRelativeTo( textArea1);
                 dialog.pack();
                 dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
@@ -175,8 +175,10 @@ public class DocumentPage {
                             textArea1.getHighlighter().addHighlight(currentDocument.getStartIndex(), currentDocument.getEndIndex(), painter);
                         }catch(Exception error){System.out.println(error);}
                     }
-                    }*/
+                    }
+                    */
                 }
+
             }
         );
     }
@@ -218,6 +220,10 @@ public class DocumentPage {
 
         if(!this.currentDocument.getDocumentOwner().equals(s.getUserName())){
             sharingButton.setVisible(false);
+        }
+
+        if(s.getUserType().equals("GU")){
+            this.setReadOnly();
         }
 
         this.setLockLabelText(d.getLockedBy());

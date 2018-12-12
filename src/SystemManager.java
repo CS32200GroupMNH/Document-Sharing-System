@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.*;
 import java.awt.CardLayout;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SystemManager {
     private static SystemManager ourInstance = new SystemManager();
@@ -43,6 +45,8 @@ public class SystemManager {
     private GuestUserHomePage guestUserPanel = new GuestUserHomePage();
     private NewDocumentPage newDocumentPanel = new NewDocumentPage();
     private DocumentPage documentPanel = new DocumentPage();
+    private SearchDocumentPage sDpanel = new SearchDocumentPage();
+    private SearchUsersPage sUPanel = new SearchUsersPage();
 
     private static HashSet<String> dictionary; //to store words from words.txt
 
@@ -64,6 +68,9 @@ public class SystemManager {
         cards.add(newDocumentPanel.getNewDocumentPanel(), "NewDocumentPage");
         cards.add(documentPanel.getDocumentPanel(), "DocumentPage");
         cards.add(superUserPanel.getSUHPPanel(), "SUHomePage");
+        cards.add(sDpanel.getSearchDocumentPanel(), "SDPage");
+        cards.add(sUPanel.getSearchUsersPanel(), "SUPage");
+
 
         frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
@@ -229,7 +236,8 @@ public class SystemManager {
     public boolean saveOldDocuments(DocumentCommands d) {
         try {
             String uniqueID = UUID.randomUUID().toString();
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO OldDocuments VALUES (" + d.getVersion() + ",'" + d.getDocumentID() + "','" + d.getDocCommands() + "','" + d.getUpdatedBy() + "','" + d.getUpdateDate() + "')");
+            String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO OldDocuments VALUES (" + d.getVersion() + ",'" + d.getDocumentID() + "','" + d.getDocCommands() + "','" + d.getUpdatedBy() + "','" + date + "')");
             statement1.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -607,7 +615,7 @@ public class SystemManager {
 
     public boolean sendMessage(String userName, String messageType, String subject, String message) {
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Messages Values ('" + userName + "', '" + messageType + "', '" + subject + "', '" + message + "');");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Messages (userName,messageType,subject,message) VALUES ('" + userName + "', '" + messageType + "', '" + subject + "', '" + message + "');");
             statement1.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -635,14 +643,31 @@ public class SystemManager {
         return allmessages;
 
     }
+
+    public ArrayList<String> getAllSuperUsers() {
+        ArrayList<String> userArray = new ArrayList<String>();
+
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM users WHERE userType = 'SU' AND userName != 'sys';");
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+                userArray.add(result.getString("userName"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return userArray;
     }
+
 
 
     public ArrayList<User> searchUsers(String name, String interests) {
         ArrayList<User> userArray = new ArrayList<User>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM userInformation WHERE userName LIKE '" + name + "%' AND userInterests LIKE '" + interests + "%';");
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM userInformation WHERE userName LIKE '" + name + "%' A'[ND userInterests LIKE '%" + interests + "%';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
@@ -660,11 +685,12 @@ public class SystemManager {
         ArrayList<Document> docArray = new ArrayList<Document>();
 
         try {
-            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM Documents WHERE documentName LIKE '" + docName + "%' AND owner LIKE '" + docOwner + "%';");
+
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM Documents WHERE documentName LIKE '" + docName + "%' AND owner = '" + this.userName + "';");
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-             //   docArray.add(new Document(result.getString("documentID"), result.getString("documentName"), result.getString("documentType"), result.getString("owner"), result.getString("documentContent"), result.getInt("currentDocVersion")));
+                docArray.add(new Document(result.getString("documentID"), result.getString("documentName"), result.getString("documentType"), result.getString("owner"),result.getString("lockedBY"), result.getString("contents"), result.getInt("versionCount")));
             }
 
         } catch (Exception e) {System.out.println(e);}
@@ -673,4 +699,5 @@ public class SystemManager {
 } 
 
 
-}
+
+

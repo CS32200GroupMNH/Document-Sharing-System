@@ -7,8 +7,9 @@ public class DocumentComplaintsDialog extends JDialog {
     private JButton buttonCancel;
     private JTable complaintTable;
     private JButton sendComplaintButton;
-
-    public DocumentComplaintsDialog() {
+    private Document currentDocument;
+    public DocumentComplaintsDialog(Document d) {
+        currentDocument = d;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(openComplaint);
@@ -39,6 +40,16 @@ public class DocumentComplaintsDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        sendComplaintButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FileComplaintDialog dialog = new FileComplaintDialog(currentDocument);
+                dialog.setLocationRelativeTo( contentPane);
+                dialog.pack();
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
+                dialog.setVisible(true);
+            }
+        });
     }
 
     private void onOK() {
@@ -52,9 +63,7 @@ public class DocumentComplaintsDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        DocumentComplaintsDialog dialog = new DocumentComplaintsDialog();
-        dialog.pack();
-        dialog.setVisible(true);
+
         System.exit(0);
     }
 }

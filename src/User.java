@@ -10,6 +10,12 @@ public class User {
 
     }
 
+
     public String getUserName() { return userName; }
     public String getUserInterests() { return userInterests; }
+
+    @Override
+    public String toString() {
+        return getUserName();
+    }
 }

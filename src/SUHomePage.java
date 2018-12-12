@@ -68,6 +68,20 @@ public class SUHomePage {
                 s.logOut();
             }
         });
+        searchUsersButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("SUPage");
+            }
+        });
+        searchDocumentsButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("SDPage");
+            }
+        });
     }
 
     public JPanel getSUHPPanel() {

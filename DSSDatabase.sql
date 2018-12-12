@@ -8,7 +8,8 @@ CREATE TABLE users(userName VARCHAR(127) primary key, password VARCHAR(127), use
 CREATE TABLE userInformation(userName VARCHAR(127) REFERENCES users(userName), firstName VARCHAR(127), lastName VARCHAR(127), userInterests TEXT);
 CREATE TABLE userApplications(userName VARCHAR(127) primary key, password VARCHAR(127), formalName VARCHAR(127), interests TEXT);
 
-CREATE TABLE Messages(messageID VARCHAR(127) primary key, userName VARCHAR(127) REFERENCES users(userName), messageType VARCHAR(127), subject TEXT, message TEXT);
+CREATE TABLE Messages(messageID int NOT NULL AUTO_INCREMENT, userName VARCHAR(127) REFERENCES users(userName), messageType VARCHAR(127), subject TEXT, message TEXT,
+PRIMARY KEY (messageID));
 
 CREATE TABLE TabooWords(location VARCHAR(127) REFERENCES Documents(documentID), word VARCHAR(127),
  CONSTRAINT sh_doc_key PRIMARY KEY (location, word));
@@ -37,6 +38,12 @@ INSERT INTO users VALUES ('naeem', 'password456','OU');
 INSERT INTO users VALUES ('hamza', 'password789','OU');
 INSERT INTO users VALUES ('kareem', 'password321','OU');
 
+INSERT INTO userInformation VALUES ('nabhan','nabhan','maswood','Programming, Video Games, Computers, Television');
+INSERT INTO userInformation VALUES ('naeem','naeem','naeem','Programming, Computers');
+INSERT INTO userInformation VALUES ('hamza','hamza','hamza','Programming, Television, Computers, Sports');
+INSERT INTO userInformation VALUES ('kareem','kareem','kareem','Programming, Sports, Computers, Television');
+
+
 INSERT INTO TabooWords VALUES ('GLOBAL','Crap');
 
 INSERT INTO TabooWords VALUES ('GLOBAL','UNK');
@@ -46,7 +53,5 @@ INSERT INTO TabooWords VALUES ('GLOBAL','pear');
 INSERT INTO TabooWords VALUES ('GLOBAL','foo');
 INSERT INTO TabooWords VALUES ('GLOBAL','bar');
 
-
-INSERT INTO userInformation VALUES ('nabhan','Nabhan','Maswood','none');
 
 INSERT INTO Documents VALUES ('GLOBAL','GLOBAL','sys','',null,'',0);

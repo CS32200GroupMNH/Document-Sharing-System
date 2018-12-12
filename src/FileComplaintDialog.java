@@ -12,7 +12,7 @@ public class FileComplaintDialog extends JDialog {
 
     private ArrayList<String> userList;
 
-    public FileComplaintDialog() {
+    public FileComplaintDialog(Document d) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -43,6 +43,23 @@ public class FileComplaintDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        sendComplaintButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(sendingList.getSelectedIndex() > -1){
+                    SystemManager s = SystemManager.getInstance();
+                    if(s.sendMessage((String) sendingList.getSelectedValue(),"C",d.getDocumentID(),complaintArea.getText())){
+                        JOptionPane.showMessageDialog(contentPane,"Complaint Sent");
+                    }
+                }
+            }
+        });
+
+        SystemManager s = SystemManager.getInstance();
+        ArrayList<String> superUsers = s.getAllSuperUsers();
+        superUsers.add(0,"owner");
+        updateUserList(superUsers);
+
     }
 
     public void updateUserList(ArrayList<String> wordList){
@@ -65,9 +82,7 @@ public class FileComplaintDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        FileComplaintDialog dialog = new FileComplaintDialog();
-        dialog.pack();
-        dialog.setVisible(true);
+
         System.exit(0);
     }
 }
