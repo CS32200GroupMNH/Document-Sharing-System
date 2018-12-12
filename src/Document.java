@@ -54,7 +54,7 @@ public class Document {
     //This function checks if a particular String is in the HashSet
     public boolean checkForWord(String word, HashSet<String> list)
     {
-        if (list.contains(word)){
+        if (list.contains(word.toLowerCase())){
 
             return true;
         }
@@ -62,7 +62,7 @@ public class Document {
         return false;
     }
 
-    //checks document for taboo word and replaces with UNK, returns true if a words is found in the document
+    //checks document for taboo word and replaces with UNK, returns a string with what the document should contain
     public String checkDocumentForTabooWords(String preSaveDocument)
     {
         SystemManager s = SystemManager.getInstance();
@@ -84,8 +84,6 @@ public class Document {
                 newDocumentContent.append(documentWords[i]+"\n");
             }
         }
-
-        //this.documentContent = newDocumentContent.toString();
 
         if(isThereUNK){
             return newDocumentContent.toString();

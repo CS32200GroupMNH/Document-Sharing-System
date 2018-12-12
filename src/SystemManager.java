@@ -1,6 +1,6 @@
 import javax.print.Doc;
 import javax.swing.*;
-import java.sql.Driver;
+
 import java.util.Arrays;
 import java.util.UUID;
 import java.util.*;
@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
 import java.awt.CardLayout;
+import java.io.File;
 
 public class SystemManager {
     private static SystemManager ourInstance = new SystemManager();
@@ -40,6 +41,8 @@ public class SystemManager {
     private GuestUserHomePage guestUserPanel = new GuestUserHomePage();
     private NewDocumentPage newDocumentPanel = new NewDocumentPage();
     private DocumentPage documentPanel = new DocumentPage();
+
+    private static HashSet<String> dictionary; //to store words from words.txt
 
     private SystemManager() {
 
@@ -79,6 +82,7 @@ public class SystemManager {
             String username = "root";
             String password = "password";
             Class.forName(driver);
+            initializeDictionary();
 
             Connection conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected");
@@ -88,6 +92,23 @@ public class SystemManager {
 
         return null;
 
+    }
+
+    //fills the HashSet dictionary with words
+    public static void initializeDictionary(){
+        try {
+            if (dictionary == null) {
+                Scanner file = new Scanner(new File("/../Assets/words.txt"));
+                HashSet<String> tempDictionary = new HashSet<String>();
+
+                while (file.hasNext()) {
+                    String line = file.nextLine();
+                    tempDictionary.add(line.toLowerCase());
+                }
+
+                dictionary = tempDictionary;
+            }
+        } catch(Exception e) {System.out.println(e);}
     }
 
     public void changePage(String pageName){
@@ -248,6 +269,27 @@ public class SystemManager {
         return docArray;
     }
 
+    public ArrayList<Document> getDocumentsOfUser(String uName){
+        ArrayList<Document> docArray = new ArrayList<Document>(3);
+
+        try {
+
+
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE owner = '" + uName + "';");
+
+            ResultSet result = statement1.executeQuery();
+
+            while (result.next()) {
+
+                docArray.add(new Document(result.getString("documentID"),result.getString("documentName"),result.getString("owner"),result.getString("documentType"),result.getString("lockedBy"),result.getString("contents"),result.getInt("versionCount")));
+            }
+        }catch (Exception e){System.out.println(e + "286");}
+        return docArray;
+
+    }
+
+
+
     public boolean openDocumentByID(String documentID){
         try {
             PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM documents WHERE documentID = '"+ documentID +"';");
@@ -292,6 +334,16 @@ public class SystemManager {
         return false;
     }
 
+    public boolean deleteDocument(String documentID){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("DELETE FROM documents WHERE documentID = '" + documentID + "';");
+            statement1.executeUpdate();
+            //delete flaggeddocuments?
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+    }
+
     public ArrayList<DocumentCommands> getDocumentVersions(String documentID){
         ArrayList<DocumentCommands> docArray = new ArrayList<DocumentCommands>(3);
 
@@ -306,6 +358,10 @@ public class SystemManager {
         }catch (Exception e){System.out.println(e + "147");}
         return docArray;
 
+    }
+
+    public static HashSet<String> getDictionary(){
+        return dictionary;
     }
 
     public HashSet<String> getTabooWords(String documentID){
@@ -326,6 +382,25 @@ public class SystemManager {
 
         return wordSet;
     }
+
+    public boolean addTabooWord(String word){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO TabooWords VALUES ('GLOBAL','" + word + "');");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+    }
+
+    public boolean removeTabooWord(String word){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("DELETE FROM TabooWords WHERE word = '" + word + "';");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+    }
+
 
     public boolean setDocumentType(String documentID,String documentType){
         try{
@@ -366,6 +441,45 @@ public class SystemManager {
         return userList;
     }
 
+    public ArrayList<String> getAllUsers(){
+        ArrayList<String> userList = new ArrayList<String>();
+
+        try {
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM users WHERE userName != '" + this.userName + "';");
+            ResultSet result = statement1.executeQuery();
+            while (result.next()) {
+                userList.add(result.getString("userName"));
+            }
+        }catch (Exception e){System.out.println(e + "279");}
+
+
+
+        return userList;
+    }
+
+    public boolean deleteUser(String uName){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("DELETE FROM users WHERE userName = '" + uName + "'");
+            statement1.executeUpdate();
+
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+
+    }
+
+    public boolean changeUserType(String uType, String uName){
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("UPDATE users SET userType = '" + uType + "' WHERE userName = '" + uName + "';");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
+        return false;
+
+    }
+
+
+
     public boolean addSharedUser(String documentID, String userName){
         try{
             PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO SharedDocuments VALUES ('" + userName + "','" + documentID + "')");
@@ -397,6 +511,7 @@ public class SystemManager {
 
         return false;
     }
+
 
     public boolean flagDocument(String documentID){
         try{
@@ -435,7 +550,30 @@ public class SystemManager {
     }
 
 
+    public boolean sendMessage(String userName, String messageType, String subject, String message){
+       try{
+           PreparedStatement statement1=dataBaseConnection.prepareStatement("INSERT INTO Messages Values ('"+ userName +"', '"+messageType+"', '"+subject+"', '"+message+"');");
+           statement1.executeUpdate();
+           return true;
+       }catch (Exception e){System.out.println(e);}
 
 
+       return false;
+    }
+    public ArrayList<String> getallMessages(String messageType){
+
+        ArrayList<String> allmessages = new ArrayList<String>();
+
+        try{
+            PreparedStatement statement1 = dataBaseConnection.prepareStatement("SELECT * FROM Messages WHERE messageType = '" + messageType + "';");
+            ResultSet result = statement1.executeQuery();
+            while (result.next()){
+                allmessages.add(result.getString("messageType"));
+            }
+        }catch (Exception e){System.out.println(e);}
+
+        return allmessages;
+
+    }
 
 }

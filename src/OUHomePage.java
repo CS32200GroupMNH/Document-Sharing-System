@@ -31,9 +31,11 @@ public class OUHomePage {
         openDocumentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SystemManager s = SystemManager.getInstance();
-                if(docList.getSelectedValue() != null) {
-                    s.openDocumentFromObject((Document) docList.getSelectedValue());
+                if(docList.getSelectedIndex() > -1){
+                    SystemManager s = SystemManager.getInstance();
+                    if(docList.getSelectedValue() != null) {
+                        s.openDocumentFromObject((Document) docList.getSelectedValue());
+                    }
                 }
             }
         });

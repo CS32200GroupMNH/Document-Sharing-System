@@ -1,0 +1,244 @@
+public class SystemManager {
+
+    // @Pre: none
+    // @Post: returns the single static instance of SystemManager
+    public static SystemManager getInstance() {
+        return ourInstance;
+        //returns instance of SystemManager. SystemManger is a singleton and has only one instance.
+    }
+
+    // @Pre: A SystemManager instance has never been created before
+    // @Post: Creates a instance of SystemManager
+    private SystemManager(){
+        databaseConnection = getConnection();
+        Setup Java Swing Pages;
+        Display first page;
+    }
+
+    // @Pre: pageName is a string that corresponds to the name of Page
+    // @Post: Current Page is changed to the page that corresponds to pageName
+    public void changePage(String pageName){
+        Change current page to page called pageName;
+    }
+
+    // @Pre: userName is a String, password is a char[]
+    // @Post: returns true if the SystemManager succesfully logs in. otherwise returns false
+    public boolean logIn(String userName, char[] password){ 
+
+        Queries Database for userName and returns a password and userType.
+
+        if(password == queried.password){
+            set userName of SystemManager to queried userName;
+            set userType of SystemManager to queried userType;
+            return true;
+        }
+
+        return false;
+
+    }
+
+    // @Pre: userName is a string, password is a char[], userType is a String
+    // @Post: returns true if succesfully registred user, returns false otherwise
+    public boolean registerUser(String userName, char[] password, String userType){
+
+        Insert User(username,password,usertype) into database;
+
+        if(database insertion succesfully)
+            return true;
+        else
+            return false;
+    }
+
+    // @Pre: userName, newUserType, firstName, lastName and interests are all strings. Is called by a super user
+    // @Post: Returns true if membership of user corresponding to userName is changed to newUserType. Otherwiser returns false
+    public boolean changeMembership(String userName, String newUserType,String firstName, String lastName, String interests){
+        if(userType == 'SU'){
+            Update database changing the userType of the user corresponding to userName to newUserType and adding all relevant information.
+            if(updated database succesfully)
+                return true;
+        }
+        return false;
+    }
+
+    // @Pre: userName is a string, is called by a super user.
+    // @Post: Returns true if user corresponding to userName is succesfully removed, returns false otherwise. 
+    public boolean removeUser(String userName){
+        if(userType == 'SU'){ 
+            Remove all database entries corresponding to the user
+            if(removed entry from database succesfully)
+                return true;
+        }
+        return false;
+    }
+
+    // @Pre: toUserName is a string corresponding to a valid userName, message type is a string correspodning to a valid message type
+    // (ex UserComplaint,DocumentComplaint,MembershipRequest, Misc). subject is a string, message is a string
+    // @Post: returns true if message is succesfully sent otherwise returns false. 
+    public sendMessage(String toUserName,String messageType,String subject, String message){
+        inserts into database message formed from the parameters.
+        if(message succesfully inserted into database)
+            return true;
+        else 
+            return false;
+    }
+
+    // @Pre: User is logged in, messageType is valid (ex "All", "Complaints", "DocumentComplaints, "MembershipRequest")
+    // @Post: Returns an array of messages to userName. If query isn't valid returns null
+    public ArrayList getAllMessages(String messageType){
+
+        Queries database to get all messages that is directed to userName that is of messageType;
+        
+        if(query is valid)
+            return all messages;
+        else
+            return null;
+    }
+
+    // @Pre: location is either "Global" or a documentID and userName has permission to the location. words is a array of Strings with no spaces
+    // @Post: returns true if words are succesfully added to the taboo list otherwise returns false;
+    public boolean addTabooWords(String location, String[] words){
+
+        if(user does not have permission to accesses location)
+            return false;    
+
+        Create insertion string to database;
+
+        for (String word : words){
+            add each word to a line in the query 
+        }
+
+        Submit the insertion command to the database;
+
+        if(Insertion is successful)
+            return true;
+        else 
+            return false;
+
+    }
+    
+    // @Pre: location is a string of a valid location "Global" or documentID
+    // @Post: returns a array of all words that are taboo assocaited with locaiton UNION global
+    public String[] getTabooWords(String location){
+        quries database to get all the taboo words associated with location.
+        Global taboowords are always unioned with the query no matter what location.
+
+        if(query is succesfull)
+            return the array of words from the query;
+        else 
+            return empty array and display error message with the query. 
+    }
+
+    // @pre: queryType is a valid string. name is a string, interests is a string
+    // @post: returns an array of Users which contains the relevant userInformationData
+    public User[] getUsers(String queryType, String name, String interests){
+        if(queryType == "single")
+            queries database getting a single user whose userName matches name;
+        else 
+            queries database getting a list of users matching name and interests;
+    
+        User[] userArray;
+        
+        for(through the results of the query){
+            User u = new User(info from query);
+            push u to userArray;
+        }
+
+        return userArray;
+        
+    }
+
+    // @Pre: documentName is a string that corresponds to a valid document which the user has permission to access
+    // @Post: returns a Document object corresponding to the doucumentName
+    public Document getDocument(String documentName){
+        if(user has permission to view document){
+            query database to get document information;
+            create document object that contains the information;
+            return document;
+        }
+        return null;
+    }
+
+    // @Pre: Document d is a valid Document object
+    // @Post: Updates database with any information in Doucument d that was changed
+    public boolean saveDocument(Document d){
+        if(user had permission to update document){
+            if(d.shouldDelete){
+                deletes the document from the database;
+                return true;
+            }
+
+            updates database with all information in d;
+            if(database succesfully updated)
+                return true;
+        }
+        return false;
+    }
+
+    // @Pre: documentName is a string
+    // @Post: creates a document in the database and returns true. otherwise returns false
+    public boolean createDocument(String documentName){
+        if(user has permission to create a document){
+            creates and inserts a new document with the given name into the database;
+            returns true;
+        }
+        returns false;
+    }
+
+
+    // @Pre: documentName is a string of a corresponding document in the SystemManager
+    // @Post: returns a Document Array containing all older versions of the document.
+    public Document[] getDocumentVersions(String documentName){
+        if(user has permission to get a document versions){
+            queries database for all versions of the document corresponding to documentName;
+            Document[] documentArray;
+            for(all the results in the query){
+                Document d = new Document(results from the query);
+                push to documentArray;
+            }
+            return documentArray;
+        }
+        return null;
+    }
+
+    // @Pre: documentName is a string, visble is a boolean
+    // @Post: visibliity of document corresponding to documentName is changed and then returns true. otherwise returns false.
+    public boolean setDocumentVisibility(String documentName, boolean visible){
+        if(user has permission to update visbility){
+            updates the document visibility of documentName in the database to visible;
+
+            if(update is succesful)
+                return true;
+        }
+        return false;
+    }
+
+    // @Pre: documentName is a string, u is a valid user
+    // @Post: adds invitation to doucment in database and returns true. otherwise returns false. 
+    public boolean inviteToDocument(String documentName,User u){
+        if(user does not have permission to send invitations)
+            return false;
+
+        updates database containing invited players adding User u;
+        if(update is succesfull)
+            return true;
+        else
+            return false;
+
+    }
+
+    // @Pre: documentName is a string, u is a valid user
+    // @Post: remove invitation to dicument in database and returns true. otherwise returns false. 
+    public boolean removeToDocument(String documentName, User u){
+        if(user does not ahve permission to remove invitation)
+            return false;
+        
+       updates database containing invited players adding User u;
+
+        if(update is succesfull)
+            return true;
+        else
+            return false;
+    }
+
+
+}

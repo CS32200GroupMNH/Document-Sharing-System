@@ -24,8 +24,12 @@ public class GuestUserHomePage {
         openDocumentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SystemManager s = SystemManager.getInstance();
-                s.openDocumentFromObject((Document) documentLIst.getSelectedValue());
+                if(documentLIst.getSelectedIndex() > -1){
+                    SystemManager s = SystemManager.getInstance();
+                    if(documentLIst.getSelectedValue() != null) {
+                        s.openDocumentFromObject((Document) documentLIst.getSelectedValue());
+                    }
+                }
             }
         });
     }

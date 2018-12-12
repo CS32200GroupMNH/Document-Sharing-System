@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.lang.String;
 import java.util.HashSet;
 
@@ -7,6 +9,21 @@ public class OrdinaryUser {
     private String fullName;
     private HashSet<String> technicalInterests = new HashSet<String>(); //Used a HashSet so we can enter multiple technical interests as keys and search them
     private String password;
+
+    private List<String> messages;
+
+    public OrdinaryUser(){
+        messages= new ArrayList<String>();
+    }
+    public void sendComplaint(String message){
+        messages.add(message);
+    }
+    public void sendOtherMessage(String message){
+        messages.add(message);
+    }
+    public List<String> getMessages(){
+        return messages;
+    }
 
     //constructor
     public OrdinaryUser(String userName, String fullName, HashSet<String> technicalInterests) {

@@ -30,8 +30,34 @@ public class SUHomePage {
         openDocumentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(docList.getSelectedIndex() > -1){
+                    SystemManager s = SystemManager.getInstance();
+                    if(docList.getSelectedValue() != null) {
+                        s.openDocumentFromObject((Document) docList.getSelectedValue());
+                    }
+                }
+            }
+        });
+        tabooWordsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 SystemManager s = SystemManager.getInstance();
-                s.openDocumentFromObject((Document) docList.getSelectedValue());
+                TabooWordsDialog dialog = new TabooWordsDialog(s.getTabooWords("GLOBAL"));
+                dialog.setLocationRelativeTo( SUHPPanel);
+                dialog.pack();
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
+                dialog.setVisible(true);
+            }
+        });
+        manageUsersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                UserManageDialog dialog = new UserManageDialog(s.getAllUsers());
+                dialog.setLocationRelativeTo( SUHPPanel);
+                dialog.pack();
+                dialog.setLocation(dialog.getX() -dialog.getWidth()/2 ,dialog.getY()-dialog.getHeight()/2);
+                dialog.setVisible(true);
             }
         });
     }
