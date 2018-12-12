@@ -636,6 +636,7 @@ public class SystemManager {
 
     }
 
+/*
     public ArrayList<User> searchUsers(String name, String interests) {
         ArrayList<User> userArray = new ArrayList<User>();
 
@@ -654,7 +655,7 @@ public class SystemManager {
     }
 }
 
-  /* public ArrayList<Document> searchDocument(String docName, String docOwner) {
+     public ArrayList<Document> searchDocument(String docName, String docOwner) {
         ArrayList<Document> docArray = new ArrayList<Document>();
 
         try {
@@ -668,5 +669,6 @@ public class SystemManager {
         } catch (Exception e) {System.out.println(e);}
         return docArray;
     }
-} */
+} 
+*/
 
