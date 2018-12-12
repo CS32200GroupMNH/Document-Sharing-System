@@ -13,10 +13,10 @@ public class MessagesPage extends JDialog {
     private JTable table2;
     private JButton SendButton;
     private JButton viewMessagesButton;
+    private JButton checkButton;
 
 
-
-     public static void main (String[]args){
+    public static void main (String[]args){
             JFrame frame = new JFrame("MessagesPage");
             MessagesPage m = new MessagesPage();
             frame.setContentPane(m.MessagesPanel);

@@ -61,7 +61,7 @@ public class SystemManager {
         cards.add(documentPanel.getDocumentPanel(),"DocumentPage");
         cards.add(superUserPanel.getSUHPPanel(),"SUHomePage");
 
-         frame = new JFrame("LoginPage");
+        frame = new JFrame("LoginPage");
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -194,7 +194,7 @@ public class SystemManager {
             String uniqueID = UUID.randomUUID().toString();
             PreparedStatement statement1 = dataBaseConnection.prepareStatement("INSERT INTO Documents VALUES ('"+ uniqueID +"', '"+ docName+"', '"+this.userName+"', '"+docType+"',NULL,'',0);");
             statement1.executeUpdate();
-             documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,"",0));
+            documentPanel.setDocumentData(new Document(uniqueID,docName,this.userName,docType,null,"",0));
             return true;
         }catch (Exception e){System.out.println(e);}
 
@@ -352,7 +352,7 @@ public class SystemManager {
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-               // System.out.println(result.getString("lockedBy"));
+                // System.out.println(result.getString("lockedBy"));
                 docArray.add(new DocumentCommands(result.getInt("versionNumber"),documentID,result.getString("updatedBY"),"December 5 2018",result.getString("commands")));
             }
         }catch (Exception e){System.out.println(e + "147");}
@@ -369,13 +369,13 @@ public class SystemManager {
 
         try {
             String sql = "SELECT * FROM TabooWords WHERE location = '"+ documentID +"' OR location = 'GLOBAL';";
-           // System.out.println(sql);
+            // System.out.println(sql);
             PreparedStatement statement1 = dataBaseConnection.prepareStatement(sql);
 
             ResultSet result = statement1.executeQuery();
 
             while (result.next()) {
-              //  System.out.println(result.getString("word"));
+                //  System.out.println(result.getString("word"));
                 wordSet.add(result.getString("word"));
             }
         }catch (Exception e){System.out.println(e + "222");}
@@ -422,7 +422,7 @@ public class SystemManager {
         return this.addSharedUser(documentID,userName);
 
 
-      //  return false;
+        //  return false;
     }
 
     public ArrayList<String> getUsersSharedWith(String documentID){
@@ -551,14 +551,14 @@ public class SystemManager {
 
 
     public boolean sendMessage(String userName, String messageType, String subject, String message){
-       try{
-           PreparedStatement statement1=dataBaseConnection.prepareStatement("INSERT INTO Messages Values ('"+ userName +"', '"+messageType+"', '"+subject+"', '"+message+"');");
-           statement1.executeUpdate();
-           return true;
-       }catch (Exception e){System.out.println(e);}
+        try{
+            PreparedStatement statement1=dataBaseConnection.prepareStatement("INSERT INTO Messages Values ('"+ userName +"', '"+messageType+"', '"+subject+"', '"+message+"');");
+            statement1.executeUpdate();
+            return true;
+        }catch (Exception e){System.out.println(e);}
 
 
-       return false;
+        return false;
     }
     public ArrayList<String> getallMessages(String messageType){
 
