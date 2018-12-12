@@ -1,10 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe6acd01-2b15-4e74-9e85-14d7a65d9c5a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/FileComplaintDialog.form" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/FileComplaintDialog.java" />
+    <list default="true" id="4599c2c9-43cd-413c-94ba-ab50391d18b9" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage$1.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage$2.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage$3.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage$4.class" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Document-Sharing-System.iml" afterPath="$PROJECT_DIR$/Document-Sharing-System.iml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/codeStyles/Project.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/dbnavigator.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/uiDesigner.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/Assets/words.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/DSSDatabase.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/Document-Sharing-System.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$1.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$2.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$2.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$3.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$3.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$4.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog$4.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/FileComplaintDialog.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/Message.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/Message.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/OUHomePage$2.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/OUHomePage$2.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/OUHomePage$3.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/OUHomePage$3.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/OUHomePage.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/OUHomePage.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/SystemManager.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/SystemManager.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/User.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/User.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/pseudocode.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/Accept_Deny_Invitation.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/Accept_Deny_Invitation.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/Document.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentCommands.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentComplaintsDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentComplaintsDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentSharingDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentSharingDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentSharingSystem.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentVersionDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/DocumentVersionDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/FileComplaintDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/FileComplaintDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/GuestUser.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/GuestUserHomePage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/GuestUserHomePage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/HomePage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/LoginPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/LoginPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/ManageUserDocumentDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/ManageUserDocumentDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/Message.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/MessagePageDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/MessagePageDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/MessagesPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/MessagesPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/MessengerGu.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/NewDocumentPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/NewDocumentPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/OUHomePage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/OUHomePage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/OldDocumentDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/OldDocumentDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/OrdinaryUser.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/RegistrationPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/RegistrationPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SUHomePage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SUHomePage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SearchDocumentPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SearchDocumentPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SearchUsersPage.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SearchUsersPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SharingManageDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SharingManageDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SuperUser.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/SystemManager.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/TabooWordsDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/TabooWordsDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/UA.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/User.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/UserManageDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/UserManageDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/VersionDialog.form" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/src/VersionDialog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Message.java" afterPath="$PROJECT_DIR$/src/Message.java" />
+      <change beforePath="$PROJECT_DIR$/src/MessagesPage.java" afterPath="$PROJECT_DIR$/src/MessagesPage.java" />
+      <change beforePath="$PROJECT_DIR$/src/OUHomePage.java" afterPath="$PROJECT_DIR$/src/OUHomePage.java" />
+      <change beforePath="$PROJECT_DIR$/src/SystemManager.java" afterPath="$PROJECT_DIR$/src/SystemManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" afterPath="$PROJECT_DIR$/src/User.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,30 +104,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Document_Sharing_System$DocumentSharingSystem.coverage" NAME="DocumentSharingSystem Coverage Results" MODIFIED="1544600305649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Document_Sharing_System$OUHomePage.coverage" NAME="OUHomePage Coverage Results" MODIFIED="1544602172063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GuestUserHomePage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GuestUserHomePage.java">
+      <file leaf-file-name="DocumentSharingSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DocumentSharingSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="37" column="43" lean-forward="false" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+            <state relative-caret-position="42">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DocumentPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentPage.java">
+      <file leaf-file-name="SystemManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SystemManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="211" column="34" lean-forward="false" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
+            <state relative-caret-position="302">
+              <caret line="666" column="14" lean-forward="true" selection-start-line="666" selection-start-column="14" selection-end-line="666" selection-end-column="14" />
               <folding>
-                <element signature="e#7367#7368#0" expanded="true" />
-                <element signature="e#7403#7404#0" expanded="true" />
+                <element signature="e#23105#23111#0" expanded="true" />
+                <element signature="e#23785#23795#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,82 +132,34 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+            <state relative-caret-position="42">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DocumentPage.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentPage.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentComplaintsDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentComplaintsDialog.java">
+      <file leaf-file-name="MessagesPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MessagesPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="-1402">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DocumentComplaintsDialog.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentComplaintsDialog.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileComplaintDialog.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FileComplaintDialog.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileComplaintDialog.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/FileComplaintDialog.java">
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-              <folding>
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#672#673#0" expanded="true" />
-                <element signature="e#804#805#0" expanded="true" />
-                <element signature="e#846#847#0" expanded="true" />
-                <element signature="e#1281#1282#0" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SystemManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6364">
-              <caret line="167" column="34" lean-forward="false" selection-start-line="167" selection-start-column="34" selection-end-line="167" selection-end-column="34" />
-              <folding>
-                <element signature="e#5515#5516#0" expanded="true" />
-                <element signature="e#5559#5560#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="341">
+              <caret line="43" column="49" lean-forward="false" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -134,20 +172,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Accept_Deny_Invitation.form" />
-        <option value="$PROJECT_DIR$/src/DocumentCommands.java" />
-        <option value="$PROJECT_DIR$/src/OUHomePage.form" />
         <option value="$PROJECT_DIR$/src/SystemManager.java" />
-        <option value="$PROJECT_DIR$/src/OUHomePage.java" />
-        <option value="$PROJECT_DIR$/src/LoginPage.java" />
-        <option value="$PROJECT_DIR$/src/SUHomePage.form" />
-        <option value="$PROJECT_DIR$/src/SUHomePage.java" />
-        <option value="$PROJECT_DIR$/src/GuestUserHomePage.form" />
-        <option value="$PROJECT_DIR$/src/GuestUserHomePage.java" />
-        <option value="$PROJECT_DIR$/src/DocumentPage.java" />
-        <option value="$PROJECT_DIR$/src/User.java" />
-        <option value="$PROJECT_DIR$/src/FileComplaintDialog.form" />
-        <option value="$PROJECT_DIR$/src/FileComplaintDialog.java" />
       </list>
     </option>
   </component>
@@ -172,10 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,25 +213,23 @@
               <item name="Document-Sharing-System" type="b2602c69:ProjectViewProjectNode" />
               <item name="Document-Sharing-System" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DocumentComplaintsDialog" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Document-Sharing-System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Document-Sharing-System" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="FileComplaintDialog" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Document-Sharing-System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Document-Sharing-System" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="UserManageDialog" type="e9f4de52:FormNode" />
+              <item name="MessagesPage" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../mysql-connector-java-8.0.13.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -224,7 +243,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.FileComplaintDialog">
+  <component name="RunManager" selected="Application.MessagesPage">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -246,23 +265,9 @@
       <module name="Document-Sharing-System" />
       <envs />
     </configuration>
-    <configuration name="FileComplaintDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MessagesPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="FileComplaintDialog" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Document-Sharing-System" />
-      <envs />
-    </configuration>
-    <configuration name="OUHomePage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="OUHomePage" />
+      <option name="MAIN_CLASS_NAME" value="MessagesPage" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -348,16 +353,14 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="3">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.DocumentSharingSystem" />
-      <item index="1" class="java.lang.String" itemvalue="Application.OUHomePage" />
-      <item index="2" class="java.lang.String" itemvalue="Application.FileComplaintDialog" />
+      <item index="1" class="java.lang.String" itemvalue="Application.MessagesPage" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.FileComplaintDialog" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.MessagesPage" />
         <item index="1" class="java.lang.String" itemvalue="Application.DocumentSharingSystem" />
-        <item index="2" class="java.lang.String" itemvalue="Application.OUHomePage" />
       </list>
     </recent_temporary>
   </component>
@@ -369,33 +372,32 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fe6acd01-2b15-4e74-9e85-14d7a65d9c5a" name="Default" comment="" />
-      <created>1544599338775</created>
+      <changelist id="4599c2c9-43cd-413c-94ba-ab50391d18b9" name="Default" comment="" />
+      <created>1544625397705</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1544599338775</updated>
+      <updated>1544625397705</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10127932" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -418,159 +420,130 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Accept_Deny_Invitation.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Document.java">
+    <entry file="file://$PROJECT_DIR$/src/DocumentSharingSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="42">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DSSDatabase.sql">
+    <entry file="file://$PROJECT_DIR$/src/MessengerGu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="238" lean-forward="false" selection-start-line="15" selection-start-column="226" selection-end-line="15" selection-end-column="238" />
+        <state relative-caret-position="336">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentCommands.java">
+    <entry file="file://$PROJECT_DIR$/src/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="55" column="64" lean-forward="false" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
+        <state relative-caret-position="341">
+          <caret line="43" column="49" lean-forward="false" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="49" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OUHomePage.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OUHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SUHomePage.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SUHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="67" column="27" lean-forward="false" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GuestUserHomePage.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GuestUserHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="37" column="43" lean-forward="false" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="211" column="34" lean-forward="false" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
-          <folding>
-            <element signature="e#7367#7368#0" expanded="true" />
-            <element signature="e#7403#7404#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        <state relative-caret-position="42">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessagesPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1402">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SystemManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6364">
-          <caret line="167" column="34" lean-forward="false" selection-start-line="167" selection-start-column="34" selection-end-line="167" selection-end-column="34" />
+        <state relative-caret-position="302">
+          <caret line="666" column="14" lean-forward="true" selection-start-line="666" selection-start-column="14" selection-end-line="666" selection-end-column="14" />
           <folding>
-            <element signature="e#5515#5516#0" expanded="true" />
-            <element signature="e#5559#5560#0" expanded="true" />
+            <element signature="e#23105#23111#0" expanded="true" />
+            <element signature="e#23785#23795#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentPage.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentComplaintsDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentComplaintsDialog.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserManageDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="113" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileComplaintDialog.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileComplaintDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#672#673#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
-            <element signature="e#1281#1282#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>9.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Document-Sharing-System</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
