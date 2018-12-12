@@ -31,6 +31,24 @@ public class OUHomePage {
                 s.changePage("NewDocumentPage");
             }
         });
+        
+/*
+        searchDocumentsButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("SearchDocumentPage");
+            }
+        });
+        searchUsersButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SystemManager s = SystemManager.getInstance();
+                s.changePage("SearchUsersPage");
+            }
+        });
+*/
+        
         openDocumentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
