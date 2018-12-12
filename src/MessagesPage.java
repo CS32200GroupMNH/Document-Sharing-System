@@ -16,6 +16,33 @@ public class MessagesPage extends JDialog {
     private JButton checkButton;
 
 
+    public MessagesPage() {
+        SendButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(MessagesPanel, "sending user a message");
+            }
+        });
+        viewMessagesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(MessagesPanel,"Viewing all the messages");
+            }
+        });
+        checkButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(MessagesPanel, "checking which user is accepted or declined");
+            }
+        });
+        viewComplaintButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(MessagesPanel, "Viewing if any complaints were received.");
+            }
+        });
+    }
+
     public static void main (String[]args){
             JFrame frame = new JFrame("MessagesPage");
             MessagesPage m = new MessagesPage();
