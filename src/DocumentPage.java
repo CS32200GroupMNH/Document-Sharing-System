@@ -1,10 +1,8 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.text.DocumentFilter;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.text.*;
+
 
 public class DocumentPage {
 
@@ -165,7 +163,21 @@ public class DocumentPage {
                     }
             }
         });
-        //Write an ActionListner to check spelling when user stops typing to check spelling and highlight the line with red.
+        textArea1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER){
+                    if (currentDocument.spellChecker()) {
+                        Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.RED);
+
+                        try {
+                            textArea1.getHighlighter().addHighlight(currentDocument.getStartIndex(), currentDocument.getEndIndex(), painter);
+                        }catch(Exception error){System.out.println(error);}
+                    }
+                    }
+                }
+            }
+        );
     }
 
     public JPanel getDocumentPanel() {

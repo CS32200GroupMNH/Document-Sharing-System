@@ -9,7 +9,7 @@ public class MessagesPage extends JDialog {
     private JPanel MessagesPanel;
     private JTabbedPane tabbedPane1;
     private JTable table1;
-    private JButton openButton;
+    private JButton viewComplaintButton;
     private JTable table2;
     private JButton SendButton;
     private JButton viewMessagesButton;
