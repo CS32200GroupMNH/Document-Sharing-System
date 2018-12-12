@@ -578,6 +578,8 @@ public class SystemManager {
 
 }
 
+
+/*
     public ArrayList<User> searchUsers(String name, String interests) {
         ArrayList<User> userArray = new ArrayList<User>();
 
@@ -607,3 +609,5 @@ public class SystemManager {
         } catch (Exception e) {System.out.println(e);}
         return userArray;
     }
+
+    */
