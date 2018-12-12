@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd1834b-cb24-4c09-90fc-122bae9ea6e3" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Accept_Deny_Invitation.form" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Accept_Deny_Invitation.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/MessagesPage.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Document-Sharing-System/SystemManager.class" afterPath="$PROJECT_DIR$/out/production/Document-Sharing-System/SystemManager.class" />
       <change beforePath="$PROJECT_DIR$/src/MessagesPage.form" afterPath="$PROJECT_DIR$/src/MessagesPage.form" />
       <change beforePath="$PROJECT_DIR$/src/MessagesPage.java" afterPath="$PROJECT_DIR$/src/MessagesPage.java" />
@@ -18,20 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="DocumentSharingSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentSharingSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2499">
+            <state relative-caret-position="2373">
               <caret line="119" column="47" lean-forward="false" selection-start-line="119" selection-start-column="47" selection-end-line="119" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -42,94 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessagesPage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MessagesPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MessagesPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessagesPage.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MessagesPage.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentPage.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SystemManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="435" column="5" lean-forward="false" selection-start-line="435" selection-start-column="5" selection-end-line="435" selection-end-column="5" />
-              <folding>
-                <marker date="1544559324153" expanded="true" signature="3900:3956" ph=" SELECT statement (USERS)" />
-                <marker date="1544559324153" expanded="true" signature="5832:5949" ph=" INSERT statement (USERAPPLICATIONS)" />
-                <marker date="1544559324153" expanded="true" signature="6325:6435" ph=" INSERT statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="6911:7059" ph=" UPDATE statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="7422:7570" ph=" INSERT statement (OLDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="7893:7976" ph=" SELECT statement (SHAREDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="8029:8091" ph=" SELECT statement (MISSINGVALUE, DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="8136:8199" ph=" SELECT statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="8247:8331" ph=" SELECT statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="8365:8449" ph=" SELECT statement (MISSINGVALUE)" />
-                <marker date="1544559324153" expanded="true" signature="8474:8476" ph=" SELECT statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="8596:8681" ph=" SELECT statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="9573:9663" ph=" SELECT statement (OLDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="10205:10267" ph=" SELECT statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="11153:11249" ph=" UPDATE statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="11608:11685" ph=" UPDATE statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="12094:12162" ph=" SELECT statement (DOCUMENTUPDATES)" />
-                <marker date="1544559324153" expanded="true" signature="12853:12937" ph=" SELECT statement (TABOOWORDS)" />
-                <marker date="1544559324153" expanded="true" signature="13554:13653" ph=" UPDATE statement (DOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="14375:14445" ph=" SELECT statement (SHAREDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="14878:14954" ph=" INSERT statement (SHAREDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="15272:15375" ph=" DELETE statement (SHAREDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="15681:15748" ph=" DELETE statement (SHAREDDOCUMENTS)" />
-                <marker date="1544559324153" expanded="true" signature="16091:16187" ph=" INSERT statement (MESSAGES)" />
-                <marker date="1544559324153" expanded="true" signature="16559:16624" ph=" SELECT statement (MESSAGES)" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OUHomePage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OUHomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentVersionDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentVersionDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1491">
-              <caret line="88" column="53" lean-forward="false" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessagePageDialog.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MessagePageDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -160,8 +70,10 @@
         <option value="$PROJECT_DIR$/src/GuestUser.java" />
         <option value="$PROJECT_DIR$/src/DocumentSharingSystem.java" />
         <option value="$PROJECT_DIR$/src/Message.java" />
-        <option value="$PROJECT_DIR$/src/SystemManager.java" />
         <option value="$PROJECT_DIR$/src/MessagesPage.form" />
+        <option value="$PROJECT_DIR$/src/Accept_Deny_Invitation.form" />
+        <option value="$PROJECT_DIR$/src/Accept_Deny_Invitation.java" />
+        <option value="$PROJECT_DIR$/src/SystemManager.java" />
       </list>
     </option>
   </component>
@@ -210,8 +122,8 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -225,7 +137,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MessagePageDialog">
+  <component name="RunManager" selected="Application.Accept_Deny_Invitation">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -233,9 +145,9 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
     </configuration>
-    <configuration name="DocumentPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Accept_Deny_Invitation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="DocumentPage" />
+      <option name="MAIN_CLASS_NAME" value="Accept_Deny_Invitation" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -247,9 +159,9 @@
       <module name="Document-Sharing-System" />
       <envs />
     </configuration>
-    <configuration name="DocumentSharingSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="DocumentVersionDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="DocumentSharingSystem" />
+      <option name="MAIN_CLASS_NAME" value="DocumentVersionDialog" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -275,9 +187,9 @@
       <module name="Document-Sharing-System" />
       <envs />
     </configuration>
-    <configuration name="MessagePageDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MessagesPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="MessagePageDialog" />
+      <option name="MAIN_CLASS_NAME" value="MessagesPage" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -289,9 +201,9 @@
       <module name="Document-Sharing-System" />
       <envs />
     </configuration>
-    <configuration name="MessagesPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="OldDocumentDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="MessagesPage" />
+      <option name="MAIN_CLASS_NAME" value="OldDocumentDialog" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -378,19 +290,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.DocumentSharingSystem" />
-      <item index="1" class="java.lang.String" itemvalue="Application.MessagePageDialog" />
-      <item index="2" class="java.lang.String" itemvalue="Application.MessagesPage" />
-      <item index="3" class="java.lang.String" itemvalue="Application.DocumentPage" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Message" />
+      <item index="0" class="java.lang.String" itemvalue="Application.MessagesPage" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Message" />
+      <item index="2" class="java.lang.String" itemvalue="Application.DocumentVersionDialog" />
+      <item index="3" class="java.lang.String" itemvalue="Application.OldDocumentDialog" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Accept_Deny_Invitation" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.MessagePageDialog" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Accept_Deny_Invitation" />
         <item index="1" class="java.lang.String" itemvalue="Application.MessagesPage" />
         <item index="2" class="java.lang.String" itemvalue="Application.Message" />
-        <item index="3" class="java.lang.String" itemvalue="Application.DocumentSharingSystem" />
-        <item index="4" class="java.lang.String" itemvalue="Application.DocumentPage" />
+        <item index="3" class="java.lang.String" itemvalue="Application.OldDocumentDialog" />
+        <item index="4" class="java.lang.String" itemvalue="Application.DocumentVersionDialog" />
       </list>
     </recent_temporary>
   </component>
@@ -433,7 +345,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2994475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2994475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -569,31 +481,41 @@
         <state relative-caret-position="8757">
           <caret line="435" column="5" lean-forward="true" selection-start-line="435" selection-start-column="5" selection-end-line="435" selection-end-column="5" />
           <folding>
-            <marker date="1544559324153" expanded="true" signature="3900:3956" ph=" SELECT statement (USERS)" />
-            <marker date="1544559324153" expanded="true" signature="5832:5949" ph=" INSERT statement (USERAPPLICATIONS)" />
-            <marker date="1544559324153" expanded="true" signature="6325:6435" ph=" INSERT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="6911:7059" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="7422:7570" ph=" INSERT statement (OLDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="7893:7976" ph=" SELECT statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8029:8091" ph=" SELECT statement (MISSINGVALUE, DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8136:8199" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8247:8331" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8365:8449" ph=" SELECT statement (MISSINGVALUE)" />
-            <marker date="1544559324153" expanded="true" signature="8474:8476" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8596:8681" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="9573:9663" ph=" SELECT statement (OLDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="10205:10267" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="11153:11249" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="11608:11685" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="12094:12162" ph=" SELECT statement (DOCUMENTUPDATES)" />
-            <marker date="1544559324153" expanded="true" signature="12853:12937" ph=" SELECT statement (TABOOWORDS)" />
-            <marker date="1544559324153" expanded="true" signature="13554:13653" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="14375:14445" ph=" SELECT statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="14878:14954" ph=" INSERT statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="15272:15375" ph=" DELETE statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="15681:15748" ph=" DELETE statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="16091:16187" ph=" INSERT statement (MESSAGES)" />
-            <marker date="1544559324153" expanded="true" signature="16559:16624" ph=" SELECT statement (MESSAGES)" />
+            <element signature="e#3176#3184#0" expanded="true" />
+            <element signature="e#8064#8074#0" expanded="true" />
+            <element signature="e#9725#9743#0" expanded="true" />
+            <element signature="e#12365#12383#0" expanded="true" />
+            <element signature="e#13079#13080#0" expanded="true" />
+            <element signature="e#13112#13113#0" expanded="true" />
+            <element signature="e#13222#13230#0" expanded="true" />
+            <element signature="e#14753#14761#0" expanded="true" />
+            <element signature="e#17089#17097#0" expanded="true" />
+            <element signature="e#18416#18426#0" expanded="true" />
+            <marker date="1544597124665" expanded="true" signature="3987:4043" ph=" SELECT statement (USERS)" />
+            <marker date="1544597124665" expanded="true" signature="5917:6047" ph=" INSERT statement (USERAPPLICATIONS)" />
+            <marker date="1544597124665" expanded="true" signature="6448:6571" ph=" INSERT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="7079:7228" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="7617:7785" ph=" INSERT statement (OLDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8133:8216" ph=" SELECT statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8269:8331" ph=" SELECT statement (MISSINGVALUE, DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8376:8439" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8487:8571" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8605:8689" ph=" SELECT statement (MISSINGVALUE)" />
+            <marker date="1544597124665" expanded="true" signature="8714:8716" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8837:8922" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="9844:9938" ph=" SELECT statement (OLDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="10509:10573" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="11491:11587" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="11972:12049" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="12483:12553" ph=" SELECT statement (DOCUMENTUPDATES)" />
+            <marker date="1544597124665" expanded="true" signature="13275:13361" ph=" SELECT statement (TABOOWORDS)" />
+            <marker date="1544597124665" expanded="true" signature="14008:14107" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="14860:14930" ph=" SELECT statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="15388:15464" ph=" INSERT statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="15808:15911" ph=" DELETE statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="16243:16310" ph=" DELETE statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="16683:16793" ph=" INSERT statement (MESSAGES)" />
+            <marker date="1544597124665" expanded="true" signature="17196:17261" ph=" SELECT statement (MESSAGES)" />
           </folding>
         </state>
       </provider>
@@ -727,48 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentVersionDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1491">
-          <caret line="88" column="53" lean-forward="false" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SystemManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="435" column="5" lean-forward="false" selection-start-line="435" selection-start-column="5" selection-end-line="435" selection-end-column="5" />
-          <folding>
-            <marker date="1544559324153" expanded="true" signature="3900:3956" ph=" SELECT statement (USERS)" />
-            <marker date="1544559324153" expanded="true" signature="5832:5949" ph=" INSERT statement (USERAPPLICATIONS)" />
-            <marker date="1544559324153" expanded="true" signature="6325:6435" ph=" INSERT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="6911:7059" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="7422:7570" ph=" INSERT statement (OLDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="7893:7976" ph=" SELECT statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8029:8091" ph=" SELECT statement (MISSINGVALUE, DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8136:8199" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8247:8331" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8365:8449" ph=" SELECT statement (MISSINGVALUE)" />
-            <marker date="1544559324153" expanded="true" signature="8474:8476" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="8596:8681" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="9573:9663" ph=" SELECT statement (OLDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="10205:10267" ph=" SELECT statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="11153:11249" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="11608:11685" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="12094:12162" ph=" SELECT statement (DOCUMENTUPDATES)" />
-            <marker date="1544559324153" expanded="true" signature="12853:12937" ph=" SELECT statement (TABOOWORDS)" />
-            <marker date="1544559324153" expanded="true" signature="13554:13653" ph=" UPDATE statement (DOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="14375:14445" ph=" SELECT statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="14878:14954" ph=" INSERT statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="15272:15375" ph=" DELETE statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="15681:15748" ph=" DELETE statement (SHAREDDOCUMENTS)" />
-            <marker date="1544559324153" expanded="true" signature="16091:16187" ph=" INSERT statement (MESSAGES)" />
-            <marker date="1544559324153" expanded="true" signature="16559:16624" ph=" SELECT statement (MESSAGES)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Document.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -793,22 +673,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MessagesPage.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/MessagePageDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MessagesPage.java">
+    <entry file="file://$PROJECT_DIR$/src/OldDocumentDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="42">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2499">
+        <state relative-caret-position="2373">
           <caret line="119" column="47" lean-forward="false" selection-start-line="119" selection-start-column="47" selection-end-line="119" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -818,10 +701,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MessagePageDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/Accept_Deny_Invitation.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessagesPage.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SystemManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9627">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#3176#3184#0" expanded="true" />
+            <element signature="e#8064#8074#0" expanded="true" />
+            <element signature="e#9725#9743#0" expanded="true" />
+            <element signature="e#12365#12383#0" expanded="true" />
+            <element signature="e#13079#13080#0" expanded="true" />
+            <element signature="e#13112#13113#0" expanded="true" />
+            <element signature="e#13222#13230#0" expanded="true" />
+            <element signature="e#14753#14761#0" expanded="true" />
+            <element signature="e#17089#17097#0" expanded="true" />
+            <element signature="e#18416#18426#0" expanded="true" />
+            <marker date="1544597124665" expanded="true" signature="3987:4043" ph=" SELECT statement (USERS)" />
+            <marker date="1544597124665" expanded="true" signature="5917:6047" ph=" INSERT statement (USERAPPLICATIONS)" />
+            <marker date="1544597124665" expanded="true" signature="6448:6571" ph=" INSERT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="7079:7228" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="7617:7785" ph=" INSERT statement (OLDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8133:8216" ph=" SELECT statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8269:8331" ph=" SELECT statement (MISSINGVALUE, DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8376:8439" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8487:8571" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8605:8689" ph=" SELECT statement (MISSINGVALUE)" />
+            <marker date="1544597124665" expanded="true" signature="8714:8716" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="8837:8922" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="9844:9938" ph=" SELECT statement (OLDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="10509:10573" ph=" SELECT statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="11491:11587" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="11972:12049" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="12483:12553" ph=" SELECT statement (DOCUMENTUPDATES)" />
+            <marker date="1544597124665" expanded="true" signature="13275:13361" ph=" SELECT statement (TABOOWORDS)" />
+            <marker date="1544597124665" expanded="true" signature="14008:14107" ph=" UPDATE statement (DOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="14860:14930" ph=" SELECT statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="15388:15464" ph=" INSERT statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="15808:15911" ph=" DELETE statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="16243:16310" ph=" DELETE statement (SHAREDDOCUMENTS)" />
+            <marker date="1544597124665" expanded="true" signature="16683:16793" ph=" INSERT statement (MESSAGES)" />
+            <marker date="1544597124665" expanded="true" signature="17196:17261" ph=" SELECT statement (MESSAGES)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DocumentVersionDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="88" column="53" lean-forward="false" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Accept_Deny_Invitation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessagesPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
           <folding />
         </state>
       </provider>
