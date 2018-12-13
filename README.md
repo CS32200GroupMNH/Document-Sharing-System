@@ -17,27 +17,51 @@ To run the system you run the Java Class file "DocumentSharingSystem" which cont
 
 The SystemManager contains all the methods that query the database since there is a single database connection in the program.
 
+
+
 Updating Membership: Not Working
+
 Maintaning a List of Taboo Words: Working
+
 Look at Taboo Words Suggestions: Not Working
+
 Unlock any Locked Documents: Working
+
 SU Process Complaints about OUs: Not Working
+
 Create New Documents: Working
+
 Invite Other Users: Working
+
 Document Status as Public, Restricted, Shared, and Private: Working
+
 Accept or Deny Invitations from other OUs: Not Working
+
 Lock a Shared Document to Update: Working
+
 Update a Locked Document and Remember Who Updated: Working
+
 Unlock a Shared Document Locked by him/herself: Working
+
 File Complaints to Owner or SU: Working
+
 Owner of Document Processes Complaints: Not Working
-Unlock Locked Documents that is being updated by others:
-Search Own Files Based on Partial KeyWords:
-Search Information about OUs based on name or interests:
+
+Unlock Locked Documents that is being updated by others: Working
+
+Search Own Files Based on Partial KeyWords: Not Working
+
+Search Information about OUs based on name or interests: Not Working
+
 Read Open Documents: Working
+
 Retrieve Old Versions: Working
+
 Complain about Open Documents: Working
+
 Send Suggestions for Taboo Words: Working
+
 Apply to be OU: Working
+
 Creative Feature(Spell Checker): Not Working
 
